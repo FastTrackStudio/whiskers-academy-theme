@@ -1,0 +1,81 @@
+<header class="site-header" id="SiteHeader" role="banner">
+  <div class="site-header__inner">
+
+    <!-- Logo -->
+    <a href="/" class="site-header__logo" aria-label="Whiskers Academy — Home">
+      {%- if settings.logo_dark != blank -%}
+        <img src="{{ settings.logo_dark | image_url: height: 88 }}"
+             alt="Whiskers Academy"
+             width="{{ settings.logo_dark.width }}"
+             height="44"
+             loading="eager">
+      {%- else -%}
+        <span style="font-family:'Baloo 2',sans-serif;font-size:1.25rem;font-weight:800;color:#2D2D2D;">Whiskers Academy</span>
+      {%- endif -%}
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="site-nav" aria-label="Main navigation">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'nav_link' -%}
+          <a href="{{ block.settings.url }}" class="site-nav__link" {{ block.shopify_attributes }}>
+            {{ block.settings.label }}
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </nav>
+
+    <!-- Header CTA -->
+    <div class="site-header__cta">
+      <a href="#buy-box" class="btn btn--primary btn--sm hide-mobile">
+        {%- if settings.pre_order_mode -%}Pre-Order — $29.99{%- else -%}Buy Now — $29.99{%- endif -%}
+      </a>
+      <button class="hamburger" id="Hamburger"
+              aria-label="Open menu" aria-expanded="false" aria-controls="MobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<nav class="mobile-nav" id="MobileNav" aria-label="Mobile navigation">
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'nav_link' -%}
+      <a href="{{ block.settings.url }}" class="site-nav__link" {{ block.shopify_attributes }}>
+        {{ block.settings.label }}
+      </a>
+    {%- endif -%}
+  {%- endfor -%}
+  <a href="#buy-box" class="btn btn--primary btn--pulse" style="margin-top:1rem;">
+    {%- if settings.pre_order_mode -%}🎓 Pre-Order — $29.99{%- else -%}🛒 Buy Now — $29.99{%- endif -%}
+  </a>
+</nav>
+
+{% schema %}
+{
+  "name": "Header",
+  "blocks": [
+    {
+      "type": "nav_link",
+      "name": "Navigation Link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Link text", "default": "How to Play" },
+        { "type": "url",  "id": "url",   "label": "Link URL", "default": "#how-to-play" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header",
+      "blocks": [
+        { "type": "nav_link", "settings": { "label": "How to Play", "url": "#how-to-play" } },
+        { "type": "nav_link", "settings": { "label": "The Cats",    "url": "#characters" } },
+        { "type": "nav_link", "settings": { "label": "About Us",    "url": "#founders" } },
+        { "type": "nav_link", "settings": { "label": "FAQ",         "url": "#faq" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

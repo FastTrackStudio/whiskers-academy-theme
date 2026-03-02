@@ -1,0 +1,76 @@
+<section class="section-pad" id="how-to-play" style="background: var(--color-white);">
+  <div class="container">
+    <div class="section-header text-center" data-reveal>
+      <span class="section-eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2 class="section-title">{{ section.settings.heading }}</h2>
+      <p class="section-sub">{{ section.settings.subheading }}</p>
+    </div>
+
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'feature_row' -%}
+        {%- assign is_reverse = forloop.index | modulo: 2 -%}
+        <div class="feature-row {% if is_reverse == 0 %}feature-row--reverse{% endif %}" data-reveal {{ block.shopify_attributes }}>
+          <div class="feature-row__visual">
+            {%- if block.settings.image != blank -%}
+              <img src="{{ block.settings.image | image_url: width: 800 }}"
+                   alt="{{ block.settings.title }}"
+                   width="800" loading="lazy">
+            {%- else -%}
+              <div style="aspect-ratio:4/3;background:linear-gradient(135deg,var(--color-primary-light),var(--color-cream));border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;font-size:5rem;">{{ block.settings.fallback_emoji | default: '🐾' }}</div>
+            {%- endif -%}
+          </div>
+          <div class="feature-row__text">
+            <div class="feature-row__number">{{ forloop.index }}</div>
+            <h3 class="feature-row__title">{{ block.settings.title }}</h3>
+            <p class="feature-row__body">{{ block.settings.body }}</p>
+            {%- if block.settings.bullet_1 != blank -%}
+            <ul class="feature-list">
+              {%- if block.settings.bullet_1 != blank -%}<li>{{ block.settings.bullet_1 }}</li>{%- endif -%}
+              {%- if block.settings.bullet_2 != blank -%}<li>{{ block.settings.bullet_2 }}</li>{%- endif -%}
+              {%- if block.settings.bullet_3 != blank -%}<li>{{ block.settings.bullet_3 }}</li>{%- endif -%}
+              {%- if block.settings.bullet_4 != blank -%}<li>{{ block.settings.bullet_4 }}</li>{%- endif -%}
+            </ul>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How to Play",
+  "settings": [
+    { "type": "text",     "id": "eyebrow",    "label": "Eyebrow",    "default": "Gameplay" },
+    { "type": "text",     "id": "heading",    "label": "Heading",    "default": "How To Graduate With Honors" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Clever card management and tight action economy make every turn sharp." }
+  ],
+  "blocks": [
+    {
+      "type": "feature_row",
+      "name": "Feature Row",
+      "settings": [
+        { "type": "image_picker", "id": "image",           "label": "Image" },
+        { "type": "text",         "id": "fallback_emoji",  "label": "Fallback emoji (if no image)", "default": "🐾" },
+        { "type": "text",         "id": "title",           "label": "Title" },
+        { "type": "textarea",     "id": "body",            "label": "Body text" },
+        { "type": "text",         "id": "bullet_1",        "label": "Bullet point 1" },
+        { "type": "text",         "id": "bullet_2",        "label": "Bullet point 2" },
+        { "type": "text",         "id": "bullet_3",        "label": "Bullet point 3" },
+        { "type": "text",         "id": "bullet_4",        "label": "Bullet point 4" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How to Play",
+      "blocks": [
+        { "type": "feature_row", "settings": { "fallback_emoji": "📚", "title": "Build Your Deck & Study Up", "body": "Choose your cat scholar and build your purr-sonal deck. Earn education cards that bring you closer to your dream career — but every choice opens you up to attack.", "bullet_1": "Build skills through education cards", "bullet_2": "Counter surprise exams from rivals", "bullet_3": "Protect your progress at all costs" } },
+        { "type": "feature_row", "settings": { "fallback_emoji": "😼", "title": "Scheme, Bluff & Outsmart", "body": "Books double as weapons. Gossip rules the halls. Every card you play is a calculated risk — or a delicious gamble. Balance strategy with cattitude.", "bullet_1": "Steal advantages from classmates", "bullet_2": "Bluff your way through exams", "bullet_3": "Time your moves for maximum chaos" } },
+        { "type": "feature_row", "settings": { "fallback_emoji": "🏆", "title": "Graduate & Claim Top Cat", "body": "First to meet their graduation requirements claims the title of Top Cat of Whiskers Academy. Will you study hard, cheat boldly, or do both?", "bullet_1": "Meet your graduation requirements", "bullet_2": "Defend your position in the final stretch", "bullet_3": "Claim the title of Top Cat!" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

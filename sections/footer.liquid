@@ -1,0 +1,95 @@
+<footer class="site-footer" id="footer" role="contentinfo">
+  <div class="container">
+    <div class="site-footer__inner">
+
+      <!-- Brand -->
+      <div>
+        {%- if settings.logo_light != blank -%}
+          <img class="site-footer__logo"
+               src="{{ settings.logo_light | image_url: height: 80 }}"
+               alt="Whiskers Academy" loading="lazy">
+        {%- else -%}
+          <span style="font-family:'Baloo 2',sans-serif;font-size:1.5rem;font-weight:800;color:#fff;">Whiskers Academy</span>
+        {%- endif -%}
+        <p class="site-footer__tagline">{{ section.settings.tagline }}</p>
+
+        <!-- Social -->
+        <div class="social-links" style="margin-top:1rem;justify-content:flex-start;">
+          {%- if settings.instagram_url != blank -%}
+            <a href="{{ settings.instagram_url }}" class="social-link" target="_blank" rel="noopener" aria-label="Instagram">📸 Instagram</a>
+          {%- endif -%}
+          {%- if settings.tiktok_url != blank -%}
+            <a href="{{ settings.tiktok_url }}" class="social-link" target="_blank" rel="noopener" aria-label="TikTok">🎵 TikTok</a>
+          {%- endif -%}
+          {%- if settings.youtube_url != blank -%}
+            <a href="{{ settings.youtube_url }}" class="social-link" target="_blank" rel="noopener" aria-label="YouTube">▶ YouTube</a>
+          {%- endif -%}
+          {%- if settings.kickstarter_url != blank -%}
+            <a href="{{ settings.kickstarter_url }}" class="social-link" target="_blank" rel="noopener" aria-label="Kickstarter">🚀 Kickstarter</a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <!-- Links -->
+      <nav aria-label="Footer navigation">
+        <div class="footer-links" style="flex-direction:column;gap:0.75rem;">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'link' -%}
+              <a href="{{ block.settings.url }}" class="footer-link" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </nav>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="site-footer__bottom">
+      <span class="site-footer__copy">
+        &copy; {{ 'now' | date: '%Y' }} Whiskers Academy · {{ section.settings.copyright_note }}
+      </span>
+      <div class="payment-badges" aria-label="Accepted payment methods">
+        <img src="{{ 'payment-visa.svg' | asset_url }}" alt="Visa" class="payment-badge" width="38" height="24" onerror="this.style.display='none'">
+        <img src="{{ 'payment-mastercard.svg' | asset_url }}" alt="Mastercard" class="payment-badge" width="38" height="24" onerror="this.style.display='none'">
+        <img src="{{ 'payment-paypal.svg' | asset_url }}" alt="PayPal" class="payment-badge" width="38" height="24" onerror="this.style.display='none'">
+        <img src="{{ 'payment-ideal.svg' | asset_url }}" alt="iDEAL" class="payment-badge" width="38" height="24" onerror="this.style.display='none'">
+        <span style="color:rgba(255,255,255,0.3);font-size:0.7rem;">+ more</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "textarea", "id": "tagline",        "label": "Brand tagline",    "default": "The cat card game that treats strategy and chaos like lab partners.\nFor cat lovers, board game fans, and anyone who's dreamed of graduating with honors." },
+    { "type": "text",     "id": "copyright_note", "label": "Copyright note",   "default": "Made with 🐾 by two humans and their cats." }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Footer Link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Link label" },
+        { "type": "url",  "id": "url",   "label": "Link URL" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer",
+      "blocks": [
+        { "type": "link", "settings": { "label": "Pre-Order",    "url": "#buy-box" } },
+        { "type": "link", "settings": { "label": "How to Play",  "url": "#how-to-play" } },
+        { "type": "link", "settings": { "label": "The Cats",     "url": "#characters" } },
+        { "type": "link", "settings": { "label": "About Us",     "url": "#founders" } },
+        { "type": "link", "settings": { "label": "FAQ",          "url": "#faq" } },
+        { "type": "link", "settings": { "label": "Privacy Policy","url": "/policies/privacy-policy" } },
+        { "type": "link", "settings": { "label": "Refund Policy","url": "/policies/refund-policy" } },
+        { "type": "link", "settings": { "label": "Contact",      "url": "mailto:hello@thewhiskersacademy.com" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,27 @@
+{
+    "general": {
+        "skip_content": "Skip to content",
+        "close": "Close",
+        "loading": "Loading..."
+    },
+    "cart": {
+        "add_to_cart": "Add to Cart",
+        "pre_order": "Pre-Order Now",
+        "sold_out": "Sold Out",
+        "view_cart": "View Cart"
+    },
+    "product": {
+        "price": "Price",
+        "sale_price": "Sale price",
+        "regular_price": "Regular price",
+        "stock_low": "Only {{ count }} left!",
+        "shipping": "Shipping calculated at checkout"
+    },
+    "accessibility": {
+        "open_menu": "Open menu",
+        "close_menu": "Close menu",
+        "play_video": "Play trailer",
+        "next_slide": "Next",
+        "prev_slide": "Previous"
+    }
+}

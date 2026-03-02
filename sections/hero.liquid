@@ -1,0 +1,164 @@
+<section class="hero" id="hero">
+  <!-- Background Image -->
+  <div class="hero__bg"
+       style="background-image: url('{{ section.settings.bg_image | image_url: width: 1920 }}');">
+  </div>
+  <div class="hero__overlay" style="background: linear-gradient(135deg, rgba(45,45,45,{{ section.settings.overlay_opacity | divided_by: 100.0 }}) 0%, rgba(42,157,143,0.28) 100%);"></div>
+
+  <div class="hero__content">
+    <!-- Eyebrow / Pre-order badge -->
+    {%- if settings.pre_order_mode -%}
+    <div class="hero__eyebrow animate-fade-up">
+      <span>🎓</span>
+      <span>Pre-Order Open · Ships {{ settings.pre_order_ship_date }}</span>
+    </div>
+    {%- else -%}
+    <div class="hero__eyebrow animate-fade-up">
+      <span>🎓</span>
+      <span>{{ section.settings.eyebrow_live }}</span>
+    </div>
+    {%- endif -%}
+
+    <!-- Headline -->
+    <h1 class="hero__title animate-fade-up animate-fade-up--delay-1">
+      {{ section.settings.headline | replace: '**', '<span class="accent">' | replace: '**', '</span>' }}
+    </h1>
+
+    <!-- Subheadline -->
+    <p class="hero__sub animate-fade-up animate-fade-up--delay-2">
+      {{ section.settings.subheadline }}
+    </p>
+
+    <!-- CTA Buttons -->
+    <div class="hero__actions animate-fade-up animate-fade-up--delay-3">
+      <a href="#buy-box" class="btn btn--primary btn--lg btn--pulse">
+        {%- if settings.pre_order_mode -%}
+          🐾 {{ section.settings.cta_preorder }}
+        {%- else -%}
+          🛒 {{ section.settings.cta_live }}
+        {%- endif -%}
+      </a>
+      {%- if section.settings.show_trailer_btn and settings.youtube_url != blank -%}
+        <a href="{{ settings.youtube_url }}" class="btn btn--ghost btn--lg btn--trailer"
+           target="_blank" rel="noopener">
+          ▶ {{ section.settings.trailer_btn_text }}
+        </a>
+      {%- endif -%}
+    </div>
+
+    <!-- Trust Badges -->
+    <div class="hero__trust animate-fade-up animate-fade-up--delay-4">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'trust_badge' -%}
+          <div class="trust-badge" {{ block.shopify_attributes }}>
+            <span class="trust-badge__icon">{{ block.settings.icon }}</span>
+            <span>{{ block.settings.text }}</span>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <!-- Scarcity Bar -->
+    {%- if section.settings.show_scarcity -%}
+    <div class="scarcity-bar animate-fade-up animate-fade-up--delay-4">
+      <div class="scarcity-bar__label">
+        <span class="scarcity-bar__limited">
+          🔥 Only {{ settings.stock_display_count }} copies left at this price
+        </span>
+        <span>1000 total</span>
+      </div>
+      <div class="scarcity-bar__track">
+        <div class="scarcity-bar__fill" style="width: {{ 100 | minus: settings.stock_display_count | divided_by: 10.0 | round }}%;"></div>
+      </div>
+    </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Hero background image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Dark overlay opacity",
+      "min": 30, "max": 85, "step": 5, "default": 70
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_live",
+      "label": "Eyebrow text (live mode)",
+      "default": "Now Available · Ships Worldwide"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Main headline",
+      "default": "Paws Up, Class Is In Session"
+    },
+    {
+      "type": "textarea",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "The expandable card game where cats in blazers scheme, study, and steal their way to the top."
+    },
+    {
+      "type": "text",
+      "id": "cta_preorder",
+      "label": "CTA — Pre-order mode",
+      "default": "Pre-Order Now — $29.99"
+    },
+    {
+      "type": "text",
+      "id": "cta_live",
+      "label": "CTA — Live mode",
+      "default": "Buy Now — $29.99"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trailer_btn",
+      "label": "Show Watch Trailer button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trailer_btn_text",
+      "label": "Trailer button text",
+      "default": "Watch Trailer"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_scarcity",
+      "label": "Show scarcity bar",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trust_badge",
+      "name": "Trust Badge",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Icon / Emoji", "default": "⭐" },
+        { "type": "text", "id": "text", "label": "Badge text", "default": "Loved by early players" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero",
+      "blocks": [
+        { "type": "trust_badge", "settings": { "icon": "⭐", "text": "Loved by 200+ early players" } },
+        { "type": "trust_badge", "settings": { "icon": "🔒", "text": "Secure Checkout" } },
+        { "type": "trust_badge", "settings": { "icon": "🌍", "text": "Worldwide Shipping" } },
+        { "type": "trust_badge", "settings": { "icon": "📦", "text": "Ships June 2026" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

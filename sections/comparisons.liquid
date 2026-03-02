@@ -1,0 +1,66 @@
+<section class="comparisons section-pad" id="comparisons">
+  <div class="container text-center">
+    <div class="section-header" data-reveal>
+      <span class="section-eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2 class="section-title" style="color:var(--color-white);">{{ section.settings.heading }}</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.75);margin-inline:auto;">{{ section.settings.subheading }}</p>
+    </div>
+
+    <div class="comparisons-grid" data-reveal>
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'game' -%}
+        <div class="comparison-chip" {{ block.shopify_attributes }}>
+          {{ block.settings.emoji }} {{ block.settings.game_name }}
+        </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.closing_text != blank -%}
+    <p style="color:rgba(255,255,255,0.8);margin-top:var(--space-8);font-size:var(--text-xl);font-weight:600;font-family:var(--font-display);" data-reveal>
+      {{ section.settings.closing_text }}
+    </p>
+    {%- endif -%}
+
+    <div style="margin-top:var(--space-8);" data-reveal>
+      <a href="#buy-box" class="btn btn--ghost btn--lg">
+        🐾 Join the Academy
+      </a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Comparisons",
+  "settings": [
+    { "type": "text",     "id": "eyebrow",      "label": "Eyebrow",       "default": "You'll Feel Right At Home" },
+    { "type": "text",     "id": "heading",      "label": "Heading",       "default": "Perfect For Fans Of..." },
+    { "type": "textarea", "id": "subheading",   "label": "Subheading",    "default": "If any of these have hit your table, Whiskers Academy was made for you." },
+    { "type": "text",     "id": "closing_text", "label": "Closing quote", "default": "Light on setup, big on personality, deep enough to reward clever play." }
+  ],
+  "blocks": [
+    {
+      "type": "game",
+      "name": "Comparison Game",
+      "settings": [
+        { "type": "text", "id": "emoji",     "label": "Emoji",      "default": "💥" },
+        { "type": "text", "id": "game_name", "label": "Game name", "default": "Exploding Kittens" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comparisons",
+      "blocks": [
+        { "type": "game", "settings": { "emoji": "💥", "game_name": "Exploding Kittens" } },
+        { "type": "game", "settings": { "emoji": "🍣", "game_name": "Sushi Go!" } },
+        { "type": "game", "settings": { "emoji": "🦄", "game_name": "Unstable Unicorns" } },
+        { "type": "game", "settings": { "emoji": "🌱", "game_name": "Doomlings" } },
+        { "type": "game", "settings": { "emoji": "🧨", "game_name": "Uno" } },
+        { "type": "game", "settings": { "emoji": "🎲", "game_name": "Party Games" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

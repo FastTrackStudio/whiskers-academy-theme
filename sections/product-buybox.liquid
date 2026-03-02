@@ -1,0 +1,179 @@
+{%- assign _ph = settings.product_handle | default: 'whiskers-academy-card-game' -%}
+{%- assign _product = all_products[_ph] -%}
+
+<section class="buybox section-pad" id="buy-box">
+  <div class="container">
+    <div class="buybox__inner">
+
+      <!-- Image Gallery -->
+      <div class="buybox__gallery" data-reveal>
+        <div class="gallery-main">
+          {%- if section.settings.image_1 != blank -%}
+            <img src="{{ section.settings.image_1 | image_url: width: 800 }}"
+                 alt="{{ section.settings.product_title }}"
+                 width="800" loading="eager">
+          {%- elsif _product.featured_image -%}
+            <img src="{{ _product.featured_image | image_url: width: 800 }}"
+                 alt="{{ _product.title }}"
+                 width="800" loading="eager">
+          {%- else -%}
+            <div style="aspect-ratio:1;background:var(--color-primary-light);display:flex;align-items:center;justify-content:center;font-size:4rem;">🎓</div>
+          {%- endif -%}
+        </div>
+
+        <!-- Thumbnails -->
+        <div class="gallery-thumbs">
+          {%- assign images = section.settings.image_1, section.settings.image_2, section.settings.image_3 -%}
+          {%- for img in section.settings.image_1 -%}{%- endfor -%}
+          {%- if section.settings.image_1 != blank -%}
+            <div class="gallery-thumb is-active"
+                 data-src="{{ section.settings.image_1 | image_url: width: 800 }}">
+              <img src="{{ section.settings.image_1 | image_url: width: 144 }}" alt="Product view 1" loading="lazy">
+            </div>
+          {%- endif -%}
+          {%- if section.settings.image_2 != blank -%}
+            <div class="gallery-thumb"
+                 data-src="{{ section.settings.image_2 | image_url: width: 800 }}">
+              <img src="{{ section.settings.image_2 | image_url: width: 144 }}" alt="Product view 2" loading="lazy">
+            </div>
+          {%- endif -%}
+          {%- if section.settings.image_3 != blank -%}
+            <div class="gallery-thumb"
+                 data-src="{{ section.settings.image_3 | image_url: width: 800 }}">
+              <img src="{{ section.settings.image_3 | image_url: width: 144 }}" alt="Product view 3" loading="lazy">
+            </div>
+          {%- endif -%}
+          {%- if section.settings.image_4 != blank -%}
+            <div class="gallery-thumb"
+                 data-src="{{ section.settings.image_4 | image_url: width: 800 }}">
+              <img src="{{ section.settings.image_4 | image_url: width: 144 }}" alt="Product view 4" loading="lazy">
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <!-- Buy Form -->
+      <div class="buybox__form" data-reveal>
+        <span class="buybox__tag">
+          {%- if settings.pre_order_mode -%}📦 Pre-Order — Ships {{ settings.pre_order_ship_date }}{%- else -%}✅ In Stock{%- endif -%}
+        </span>
+
+        <h2 class="buybox__title">{{ section.settings.product_title }}</h2>
+        <p class="buybox__tagline">{{ section.settings.product_tagline }}</p>
+
+        <div class="buybox__price-row">
+          <span class="buybox__price">${{ section.settings.price }}</span>
+          <span class="buybox__price-note">+ shipping · Secure checkout</span>
+        </div>
+
+        <div class="buybox__stock">
+          Only {{ settings.stock_display_count }} copies left at this price
+        </div>
+
+        <!-- Add to Cart / Pre-Order Button -->
+        {%- if _product != blank -%}
+          {%- assign _variant = _product.first_available_variant -%}
+          <button class="btn btn--primary btn--lg buybox__add-btn btn--pulse"
+                  data-add-to-cart
+                  data-variant-id="{{ _variant.id }}"
+                  {%- if _variant.available == false -%} disabled {%- endif -%}>
+            {%- if settings.pre_order_mode -%}
+              🐾 Pre-Order Now — ${{ section.settings.price }}
+            {%- elsif _variant.available -%}
+              🛒 Buy Now — ${{ section.settings.price }}
+            {%- else -%}
+              Sold Out
+            {%- endif -%}
+          </button>
+        {%- else -%}
+          <a href="{{ section.settings.buy_url | default: '/cart' }}"
+             class="btn btn--primary btn--lg buybox__add-btn btn--pulse">
+            {%- if settings.pre_order_mode -%}🐾 Pre-Order Now — ${{ section.settings.price }}{%- else -%}🛒 Buy Now — ${{ section.settings.price }}{%- endif -%}
+          </a>
+        {%- endif -%}
+
+        <!-- Guarantees -->
+        <div class="buybox__guarantees">
+          <span class="guarantee-chip">🔒 Secure Checkout</span>
+          <span class="guarantee-chip">🌍 Worldwide Shipping</span>
+          <span class="guarantee-chip">📦 Ships {{ settings.pre_order_ship_date | default: 'June 2026' }}</span>
+          <span class="guarantee-chip">⭐ Satisfaction Guaranteed</span>
+        </div>
+
+        <!-- Pre-order explainer -->
+        {%- if settings.pre_order_mode -%}
+        <div class="preorder-accordion">
+          <button class="preorder-accordion__trigger" aria-expanded="false">
+            <span>❓ How does pre-ordering work?</span>
+            <span class="chevron">▾</span>
+          </button>
+          <div class="preorder-accordion__body">
+            <p>{{ section.settings.preorder_explainer }}</p>
+          </div>
+        </div>
+        {%- endif -%}
+
+        <!-- Include in Box -->
+        {%- if section.settings.whats_in_box != blank -%}
+        <div style="margin-top:1.5rem;">
+          <p style="font-family:var(--font-display);font-weight:700;margin-bottom:0.5rem;">📦 What's in the box:</p>
+          <p style="color:var(--color-mid);font-size:0.9rem;">{{ section.settings.whats_in_box }}</p>
+        </div>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Buy Box",
+  "settings": [
+    {
+      "type": "header", "content": "Product"
+    },
+    {
+      "type": "text", "id": "product_title",
+      "label": "Product name",
+      "default": "Whiskers Academy Card Game"
+    },
+    {
+      "type": "text", "id": "product_tagline",
+      "label": "Tagline (below title)",
+      "default": "The expandable card game where cats chase their dream careers. For 2–6 players, ages 10+."
+    },
+    {
+      "type": "text", "id": "price",
+      "label": "Display price (e.g. 29.99)",
+      "default": "29.99"
+    },
+    {
+      "type": "url", "id": "buy_url",
+      "label": "Fallback Buy URL (if no Shopify product set up)",
+      "default": "/cart"
+    },
+    {
+      "type": "header", "content": "Gallery Images"
+    },
+    { "type": "image_picker", "id": "image_1", "label": "Gallery image 1 (main)" },
+    { "type": "image_picker", "id": "image_2", "label": "Gallery image 2" },
+    { "type": "image_picker", "id": "image_3", "label": "Gallery image 3" },
+    { "type": "image_picker", "id": "image_4", "label": "Gallery image 4" },
+    {
+      "type": "header", "content": "Pre-order Info"
+    },
+    {
+      "type": "textarea", "id": "preorder_explainer",
+      "label": "Pre-order explainer text",
+      "default": "You pay today and your card is charged immediately. Your game will be produced and shipped in June 2026. You'll receive email updates along the way. Cancellations are accepted up to 30 days after purchase."
+    },
+    {
+      "type": "text", "id": "whats_in_box",
+      "label": "What's in the box",
+      "default": "100+ illustrated cards · Rules booklet · Durable game box · Character reference cards"
+    }
+  ],
+  "presets": [{ "name": "Product Buy Box" }]
+}
+{% endschema %}

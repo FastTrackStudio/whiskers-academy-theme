@@ -1,0 +1,393 @@
+{
+    "sections": {
+        "hero": {
+            "type": "hero",
+            "blocks": {
+                "trust-1": {
+                    "type": "trust_badge",
+                    "settings": {
+                        "icon": "⭐",
+                        "text": "Loved by 200+ early players"
+                    }
+                },
+                "trust-2": {
+                    "type": "trust_badge",
+                    "settings": {
+                        "icon": "🔒",
+                        "text": "Secure Checkout"
+                    }
+                },
+                "trust-3": {
+                    "type": "trust_badge",
+                    "settings": {
+                        "icon": "🌍",
+                        "text": "Worldwide Shipping"
+                    }
+                },
+                "trust-4": {
+                    "type": "trust_badge",
+                    "settings": {
+                        "icon": "📦",
+                        "text": "Ships June 2026"
+                    }
+                }
+            },
+            "block_order": [
+                "trust-1",
+                "trust-2",
+                "trust-3",
+                "trust-4"
+            ],
+            "settings": {}
+        },
+        "game-stats": {
+            "type": "game-stats",
+            "blocks": {
+                "stat-1": {
+                    "type": "stat",
+                    "settings": {
+                        "icon": "👥",
+                        "label": "Players",
+                        "value": "2–6"
+                    }
+                },
+                "stat-2": {
+                    "type": "stat",
+                    "settings": {
+                        "icon": "⏱",
+                        "label": "Play Time",
+                        "value": "15–30 min"
+                    }
+                },
+                "stat-3": {
+                    "type": "stat",
+                    "settings": {
+                        "icon": "🎓",
+                        "label": "Best For",
+                        "value": "Ages 10+"
+                    }
+                },
+                "stat-4": {
+                    "type": "stat",
+                    "settings": {
+                        "icon": "📦",
+                        "label": "In the Box",
+                        "value": "Cards + Rules"
+                    }
+                }
+            },
+            "block_order": [
+                "stat-1",
+                "stat-2",
+                "stat-3",
+                "stat-4"
+            ],
+            "settings": {}
+        },
+        "buybox": {
+            "type": "product-buybox",
+            "settings": {}
+        },
+        "testimonials": {
+            "type": "testimonials",
+            "blocks": {
+                "rev-1": {
+                    "type": "review",
+                    "settings": {
+                        "stars": 5,
+                        "review": "This game had us cackling from the first round. My cat actually watched us play — clearly impressed.",
+                        "name": "Sarah K.",
+                        "tag": "Cat mom · Board game fanatic"
+                    }
+                },
+                "rev-2": {
+                    "type": "review",
+                    "settings": {
+                        "stars": 5,
+                        "review": "Setup in 60 seconds, impossible to put down. We played until midnight and none of us had work the next day. Worth it.",
+                        "name": "Marcus T.",
+                        "tag": "Exploding Kittens veteran"
+                    }
+                },
+                "rev-3": {
+                    "type": "review",
+                    "settings": {
+                        "stars": 5,
+                        "review": "Finally a game my kids AND I are both actually competitive at. The card art alone is worth the price of admission.",
+                        "name": "Priya M.",
+                        "tag": "Parent · Card game collector"
+                    }
+                }
+            },
+            "block_order": [
+                "rev-1",
+                "rev-2",
+                "rev-3"
+            ],
+            "settings": {}
+        },
+        "how-to-play": {
+            "type": "how-to-play",
+            "blocks": {
+                "row-1": {
+                    "type": "feature_row",
+                    "settings": {
+                        "fallback_emoji": "📚",
+                        "title": "Build Your Deck & Study Up",
+                        "body": "Choose your cat scholar and build your purr-sonal deck. Earn education cards that bring you closer to your dream career.",
+                        "bullet_1": "Build skills through education cards",
+                        "bullet_2": "Counter surprise exams from rivals",
+                        "bullet_3": "Protect your progress at all costs"
+                    }
+                },
+                "row-2": {
+                    "type": "feature_row",
+                    "settings": {
+                        "fallback_emoji": "😼",
+                        "title": "Scheme, Bluff & Outsmart",
+                        "body": "Books double as weapons. Gossip rules the halls. Every card is a calculated risk — or a delicious gamble.",
+                        "bullet_1": "Steal advantages from classmates",
+                        "bullet_2": "Bluff your way through exams",
+                        "bullet_3": "Time your moves for maximum chaos"
+                    }
+                },
+                "row-3": {
+                    "type": "feature_row",
+                    "settings": {
+                        "fallback_emoji": "🏆",
+                        "title": "Graduate & Claim Top Cat",
+                        "body": "First to meet their graduation requirements claims the title of Top Cat. Will you study hard, cheat boldly, or do both?",
+                        "bullet_1": "Meet your graduation requirements",
+                        "bullet_2": "Defend your position in the final stretch",
+                        "bullet_3": "Claim the title of Top Cat!"
+                    }
+                }
+            },
+            "block_order": [
+                "row-1",
+                "row-2",
+                "row-3"
+            ],
+            "settings": {}
+        },
+        "characters": {
+            "type": "character-showcase",
+            "blocks": {
+                "char-1": {
+                    "type": "character",
+                    "settings": {
+                        "emoji": "🎩",
+                        "name": "Professor Mittens",
+                        "career": "Dean of Chaos"
+                    }
+                },
+                "char-2": {
+                    "type": "character",
+                    "settings": {
+                        "emoji": "💼",
+                        "name": "Lady Fluffington",
+                        "career": "Corporate Spy"
+                    }
+                },
+                "char-3": {
+                    "type": "character",
+                    "settings": {
+                        "emoji": "📚",
+                        "name": "Sir Whiskers III",
+                        "career": "Academic Swindler"
+                    }
+                },
+                "char-4": {
+                    "type": "character",
+                    "settings": {
+                        "emoji": "🎭",
+                        "name": "Duchess Pawsworth",
+                        "career": "Drama Professor"
+                    }
+                },
+                "char-5": {
+                    "type": "character",
+                    "settings": {
+                        "emoji": "🔬",
+                        "name": "Dr. Tabby",
+                        "career": "Mad Scientist"
+                    }
+                },
+                "char-6": {
+                    "type": "character",
+                    "settings": {
+                        "emoji": "⚖️",
+                        "name": "Judge Claw",
+                        "career": "Student Parliament"
+                    }
+                }
+            },
+            "block_order": [
+                "char-1",
+                "char-2",
+                "char-3",
+                "char-4",
+                "char-5",
+                "char-6"
+            ],
+            "settings": {}
+        },
+        "comparisons": {
+            "type": "comparisons",
+            "blocks": {
+                "game-1": {
+                    "type": "game",
+                    "settings": {
+                        "emoji": "💥",
+                        "game_name": "Exploding Kittens"
+                    }
+                },
+                "game-2": {
+                    "type": "game",
+                    "settings": {
+                        "emoji": "🍣",
+                        "game_name": "Sushi Go!"
+                    }
+                },
+                "game-3": {
+                    "type": "game",
+                    "settings": {
+                        "emoji": "🦄",
+                        "game_name": "Unstable Unicorns"
+                    }
+                },
+                "game-4": {
+                    "type": "game",
+                    "settings": {
+                        "emoji": "🌱",
+                        "game_name": "Doomlings"
+                    }
+                },
+                "game-5": {
+                    "type": "game",
+                    "settings": {
+                        "emoji": "🧨",
+                        "game_name": "Uno"
+                    }
+                },
+                "game-6": {
+                    "type": "game",
+                    "settings": {
+                        "emoji": "🎲",
+                        "game_name": "Party Games"
+                    }
+                }
+            },
+            "block_order": [
+                "game-1",
+                "game-2",
+                "game-3",
+                "game-4",
+                "game-5",
+                "game-6"
+            ],
+            "settings": {}
+        },
+        "founders": {
+            "type": "founder-story",
+            "blocks": {
+                "p-1": {
+                    "type": "paragraph",
+                    "settings": {
+                        "text": "We are Emiel and Lisa from Whiskers Academy — two humans trying to impress their cats. We built a fast, expandable card game that treats humor and strategy like lab partners."
+                    }
+                },
+                "p-2": {
+                    "type": "paragraph",
+                    "settings": {
+                        "text": "During a quiet holiday with no TV, we turned to card games for fun. We enjoyed it so much that we decided to create our own. As artists in the video game industry and lifelong board game fans, we combined our love for cats, career humor, and strategy to create Whiskers Academy."
+                    }
+                },
+                "p-3": {
+                    "type": "paragraph",
+                    "settings": {
+                        "text": "After many brainstorming sessions and sticky notes, we found our perfect theme. Some characters are even inspired by our real cats — a heartfelt tribute. Now it's time to share Whiskers Academy with the world!"
+                    }
+                }
+            },
+            "block_order": [
+                "p-1",
+                "p-2",
+                "p-3"
+            ],
+            "settings": {}
+        },
+        "faq": {
+            "type": "faq",
+            "blocks": {
+                "faq-1": {
+                    "type": "faq_item",
+                    "settings": {
+                        "question": "When will my order ship?",
+                        "answer": "We estimate shipping in June 2026. You'll receive email updates at every milestone."
+                    }
+                },
+                "faq-2": {
+                    "type": "faq_item",
+                    "settings": {
+                        "question": "What's included in the box?",
+                        "answer": "100+ illustrated cards, a full-colour rules booklet, character reference cards, and a sturdy game box."
+                    }
+                },
+                "faq-3": {
+                    "type": "faq_item",
+                    "settings": {
+                        "question": "How many players and how long does it take?",
+                        "answer": "Designed for 2–6 players. Setup takes 1 minute, rounds run 15–30 minutes."
+                    }
+                },
+                "faq-4": {
+                    "type": "faq_item",
+                    "settings": {
+                        "question": "Do you ship worldwide?",
+                        "answer": "Yes! We ship worldwide (excluding regions with active conflict or import restrictions)."
+                    }
+                },
+                "faq-5": {
+                    "type": "faq_item",
+                    "settings": {
+                        "question": "Can I cancel my pre-order?",
+                        "answer": "Yes — we accept cancellations up to 30 days after your order. After that, orders enter production."
+                    }
+                },
+                "faq-6": {
+                    "type": "faq_item",
+                    "settings": {
+                        "question": "Will there be expansions?",
+                        "answer": "Yes! Future expansions, an NSFW version, and collectible plush characters are all in the pipeline."
+                    }
+                }
+            },
+            "block_order": [
+                "faq-1",
+                "faq-2",
+                "faq-3",
+                "faq-4",
+                "faq-5",
+                "faq-6"
+            ],
+            "settings": {}
+        },
+        "second-cta": {
+            "type": "second-cta",
+            "settings": {}
+        }
+    },
+    "order": [
+        "hero",
+        "game-stats",
+        "buybox",
+        "testimonials",
+        "how-to-play",
+        "characters",
+        "comparisons",
+        "founders",
+        "faq",
+        "second-cta"
+    ]
+}

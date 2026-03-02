@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2A9D8F">
+
+  {%- if page_title -%}
+    <title>{{ page_title | escape }} — Whiskers Academy</title>
+  {%- else -%}
+    <title>Whiskers Academy — Paws Up, Class Is In Session</title>
+  {%- endif -%}
+
+  {%- if settings.meta_description != blank -%}
+    <meta name="description" content="{{ settings.meta_description | escape }}">
+  {%- endif -%}
+
+  <meta property="og:site_name" content="Whiskers Academy">
+  <meta property="og:title" content="Whiskers Academy — Paws Up, Class Is In Session">
+  <meta property="og:description" content="{{ settings.meta_description | default: 'Cats in blazers. Campus drama. Pre-order now!' | escape }}">
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="{{ canonical_url }}">
+  {%- if settings.og_image != blank -%}
+    <meta property="og:image" content="{{ settings.og_image | image_url: width: 1200 }}">
+  {%- endif -%}
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  {%- if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+  {%- endif -%}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+  {{ 'base.css' | asset_url | stylesheet_tag }}
+  {{ content_for_header }}
+
+  {%- if settings.meta_pixel_id != blank -%}
+    {% render 'meta-pixel' %}
+  {%- endif -%}
+
+  {%- assign _ph = settings.product_handle | default: 'whiskers-academy-card-game' -%}
+  {%- assign _p = all_products[_ph] -%}
+  {%- if _p != blank -%}
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Product","name":{{ _p.title | json }},"brand":{"@type":"Brand","name":"Whiskers Academy"},"offers":{"@type":"Offer","priceCurrency":{{ cart.currency.iso_code | json }},"price":{{ _p.price | divided_by: 100.0 | json }},"availability":"https://schema.org/LimitedAvailability","url":"{{ shop.url }}"}}
+  </script>
+  {%- endif -%}
+</head>
+
+<body class="{% if settings.pre_order_mode %}is-preorder{% endif %}">
+  <a class="skip-link" href="#MainContent">Skip to content</a>
+  {% section 'announcement-bar' %}
+  {% section 'header' %}
+  <main id="MainContent" role="main" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
+  {% section 'footer' %}
+
+  <div class="sticky-cta" id="StickyCTA" aria-hidden="true">
+    <a href="#buy-box" class="sticky-cta__btn">
+      {%- if settings.pre_order_mode -%}🎓 Pre-Order Now — $29.99{%- else -%}🛒 Buy Now — $29.99{%- endif -%}
+    </a>
+    <span class="sticky-cta__scarcity">Only {{ settings.stock_display_count | default: 47 }} copies left</span>
+  </div>
+
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+</body>
+</html>

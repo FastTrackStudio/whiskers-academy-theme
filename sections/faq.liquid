@@ -1,0 +1,70 @@
+<section class="faq section-pad" id="faq">
+  <div class="container">
+    <div class="section-header text-center" data-reveal>
+      <span class="section-eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2 class="section-title">{{ section.settings.heading }}</h2>
+    </div>
+
+    <div class="faq__list">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'faq_item' -%}
+        <div class="faq-item" {{ block.shopify_attributes }}>
+          <button class="faq-item__trigger" aria-expanded="false">
+            <span>{{ block.settings.question }}</span>
+            <span class="faq-item__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-item__body">
+            {{ block.settings.answer }}
+          </div>
+        </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.footer_text != blank -%}
+    <p style="text-align:center;margin-top:var(--space-8);color:var(--color-mid);font-size:var(--text-sm);" data-reveal>
+      {{ section.settings.footer_text }}
+      {%- if section.settings.contact_email != blank -%}
+        <a href="mailto:{{ section.settings.contact_email }}" style="color:var(--color-primary);font-weight:700;">{{ section.settings.contact_email }}</a>
+      {%- endif -%}
+    </p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    { "type": "text", "id": "eyebrow",       "label": "Eyebrow",                  "default": "Questions" },
+    { "type": "text", "id": "heading",       "label": "Heading",                  "default": "Frequently Asked Questions" },
+    { "type": "text", "id": "footer_text",   "label": "Footer text (before email)", "default": "Still have questions? Email us at " },
+    { "type": "text", "id": "contact_email", "label": "Contact email",            "default": "hello@thewhiskersacademy.com" }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        { "type": "text",     "id": "question", "label": "Question" },
+        { "type": "textarea", "id": "answer",   "label": "Answer" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        { "type": "faq_item", "settings": { "question": "When will my order ship?", "answer": "Whiskers Academy is currently in the pre-order phase. We estimate shipping in June 2026. You'll receive email updates at every milestone." } },
+        { "type": "faq_item", "settings": { "question": "What's included in the box?", "answer": "Each copy includes 100+ illustrated cards, a full-colour rules booklet, character reference cards, and a sturdy game box." } },
+        { "type": "faq_item", "settings": { "question": "How many players and how long does it take?", "answer": "Whiskers Academy is designed for 2–6 players. Setup takes about 1 minute, and a typical round runs 15–30 minutes." } },
+        { "type": "faq_item", "settings": { "question": "Do you ship worldwide?", "answer": "Yes! We ship worldwide (excluding regions with active conflict or import restrictions). Shipping costs are calculated at checkout based on your location." } },
+        { "type": "faq_item", "settings": { "question": "Can I cancel or change my pre-order?", "answer": "Yes — we accept cancellations and address changes up to 30 days after your order. After that, orders enter production and cannot be changed." } },
+        { "type": "faq_item", "settings": { "question": "Is this age-appropriate for children?", "answer": "Whiskers Academy is recommended for ages 10 and up. Younger players may need a little help on early rounds, but pick it up fast!" } },
+        { "type": "faq_item", "settings": { "question": "Will there be expansions?", "answer": "Yes! Whiskers Academy is built to expand. Future expansions, an NSFW version, and collectible plush characters are all in the pipeline. Follow us on social to stay updated." } },
+        { "type": "faq_item", "settings": { "question": "Is this on Kickstarter?", "answer": "We are planning a Kickstarter campaign! Follow the link in the menu or sign up below to be notified the moment it goes live." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

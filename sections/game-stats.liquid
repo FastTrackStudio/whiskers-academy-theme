@@ -1,0 +1,46 @@
+<section class="game-stats" id="game-stats">
+  <div class="container">
+    <div class="game-stats__inner">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'stat' -%}
+          <div class="stat-tile" {{ block.shopify_attributes }}>
+            <span class="stat-tile__icon">{{ block.settings.icon }}</span>
+            <span>
+              <span class="stat-tile__label">{{ block.settings.label }}</span>
+              <span class="stat-tile__value">{{ block.settings.value }}</span>
+            </span>
+          </div>
+          {%- unless forloop.last -%}<div class="stat-divider" aria-hidden="true"></div>{%- endunless -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Game Stats Bar",
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        { "type": "text", "id": "icon",  "label": "Icon / emoji", "default": "👥" },
+        { "type": "text", "id": "label", "label": "Label",         "default": "Players" },
+        { "type": "text", "id": "value", "label": "Value",         "default": "2–6" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Game Stats Bar",
+      "blocks": [
+        { "type": "stat", "settings": { "icon": "👥", "label": "Players",  "value": "2–6" } },
+        { "type": "stat", "settings": { "icon": "⏱", "label": "Play Time", "value": "15–30 min" } },
+        { "type": "stat", "settings": { "icon": "🎓", "label": "Best For",  "value": "Ages 10+" } },
+        { "type": "stat", "settings": { "icon": "📦", "label": "In the Box","value": "Cards + Rules" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
