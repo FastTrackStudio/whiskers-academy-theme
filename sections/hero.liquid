@@ -7,10 +7,17 @@
 
   <div class="hero__content">
     <!-- Eyebrow / Pre-order badge -->
+    <!-- Promo badge + Eyebrow -->
     {%- if settings.pre_order_mode -%}
-    <div class="hero__eyebrow animate-fade-up">
-      <span>🎓</span>
-      <span>Pre-Order Open · Ships {{ settings.pre_order_ship_date }}</span>
+    <div class="hero__eyebrow animate-fade-up" style="gap:0.5rem;flex-wrap:wrap;">
+      <span style="background:rgba(255,255,255,0.15);padding:0.3rem 0.9rem;border-radius:999px;">
+        🎓 Pre-Order Open · Ships {{ settings.pre_order_ship_date }}
+      </span>
+      {%- if settings.show_promo_badge -%}
+      <span style="background:linear-gradient(90deg,#E07A5F,#F2A65A);padding:0.3rem 0.9rem;border-radius:999px;font-weight:800;">
+        {{ settings.promo_badge_text }}
+      </span>
+      {%- endif -%}
     </div>
     {%- else -%}
     <div class="hero__eyebrow animate-fade-up">
@@ -33,9 +40,11 @@
     <div class="hero__actions animate-fade-up animate-fade-up--delay-3">
       <a href="#buy-box" class="btn btn--primary btn--lg btn--pulse">
         {%- if settings.pre_order_mode -%}
-          🐾 {{ section.settings.cta_preorder }}
+          🐾 {{ section.settings.cta_preorder }} —
+          {%- if settings.original_price != blank -%}<s style="opacity:0.6;font-size:0.9em;font-weight:400">${{ settings.original_price }}</s> {%- endif -%}
+          ${{ settings.sale_price | default: '23.99' }}
         {%- else -%}
-          🛒 {{ section.settings.cta_live }}
+          🛒 {{ section.settings.cta_live }} — ${{ settings.sale_price | default: '23.99' }}
         {%- endif -%}
       </a>
       {%- if section.settings.show_trailer_btn and settings.youtube_url != blank -%}
@@ -111,14 +120,16 @@
     {
       "type": "text",
       "id": "cta_preorder",
-      "label": "CTA — Pre-order mode",
-      "default": "Pre-Order Now — $29.99"
+      "label": "CTA button text — pre-order mode",
+      "info": "Price is added automatically from theme settings",
+      "default": "Pre-Order Now"
     },
     {
       "type": "text",
       "id": "cta_live",
-      "label": "CTA — Live mode",
-      "default": "Buy Now — $29.99"
+      "label": "CTA button text — live mode",
+      "info": "Price is added automatically from theme settings",
+      "default": "Buy Now"
     },
     {
       "type": "checkbox",

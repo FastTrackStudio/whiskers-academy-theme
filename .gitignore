@@ -1,0 +1,12 @@
+# Local preview & backup files — not part of the Shopify theme
+preview.html
+preview.html.backup
+privacy-policy.html
+refund-policy.html
+
+# Local brand assets (used only for offline preview)
+brand-assets/
+
+# OS files
+.DS_Store
+Thumbs.db

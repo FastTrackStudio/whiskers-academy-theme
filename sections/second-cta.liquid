@@ -9,7 +9,11 @@
 
       <div class="second-cta__actions" data-reveal>
         <a href="#buy-box" class="btn btn--primary btn--lg btn--pulse">
-          {%- if settings.pre_order_mode -%}🐾 Pre-Order Now — $29.99{%- else -%}🛒 Buy Now — $29.99{%- endif -%}
+          {%- if settings.pre_order_mode -%}
+            🐾 Pre-Order Now — {%- if settings.original_price != blank -%}<s style="opacity:0.6;font-weight:400">${{ settings.original_price }}</s> {%- endif -%}${{ settings.sale_price | default: '23.99' }}
+          {%- else -%}
+            🛒 Buy Now — ${{ settings.sale_price | default: '23.99' }}
+          {%- endif -%}
         </a>
         {%- if settings.kickstarter_url != blank -%}
         <a href="{{ settings.kickstarter_url }}" class="btn btn--ghost btn--lg" target="_blank" rel="noopener">
@@ -41,14 +45,14 @@
             📸 Instagram
           </a>
         {%- endif -%}
-        {%- if settings.tiktok_url != blank -%}
-          <a href="{{ settings.tiktok_url }}" class="social-link" target="_blank" rel="noopener">
-            🎵 TikTok
-          </a>
-        {%- endif -%}
         {%- if settings.youtube_url != blank -%}
           <a href="{{ settings.youtube_url }}" class="social-link" target="_blank" rel="noopener">
             ▶ YouTube
+          </a>
+        {%- endif -%}
+        {%- if settings.facebook_url != blank -%}
+          <a href="{{ settings.facebook_url }}" class="social-link" target="_blank" rel="noopener">
+            📘 Facebook
           </a>
         {%- endif -%}
       </div>

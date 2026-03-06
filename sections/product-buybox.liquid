@@ -8,52 +8,44 @@
       <!-- Image Gallery -->
       <div class="buybox__gallery" data-reveal>
         <div class="gallery-main">
-          {%- if section.settings.image_1 != blank -%}
-            <img src="{{ section.settings.image_1 | image_url: width: 800 }}"
-                 alt="{{ section.settings.product_title }}"
-                 width="800" loading="eager">
-          {%- elsif _product.featured_image -%}
-            <img src="{{ _product.featured_image | image_url: width: 800 }}"
-                 alt="{{ _product.title }}"
-                 width="800" loading="eager">
-          {%- else -%}
-            <div style="aspect-ratio:1;background:var(--color-primary-light);display:flex;align-items:center;justify-content:center;font-size:4rem;">🎓</div>
-          {%- endif -%}
+          <img id="mainGalleryImg"
+               src="{%- if section.settings.image_1 != blank -%}{{ section.settings.image_1 | image_url: width: 800 }}{%- elsif _product.featured_image -%}{{ _product.featured_image | image_url: width: 800 }}{%- endif -%}"
+               alt="{{ section.settings.product_title }}"
+               width="800" loading="eager">
         </div>
 
         <!-- Thumbnails -->
         <div class="gallery-thumbs">
-          {%- assign images = section.settings.image_1, section.settings.image_2, section.settings.image_3 -%}
-          {%- for img in section.settings.image_1 -%}{%- endfor -%}
           {%- if section.settings.image_1 != blank -%}
             <div class="gallery-thumb is-active"
                  data-src="{{ section.settings.image_1 | image_url: width: 800 }}">
-              <img src="{{ section.settings.image_1 | image_url: width: 144 }}" alt="Product view 1" loading="lazy">
+              <img src="{{ section.settings.image_1 | image_url: width: 144 }}" alt="View 1" loading="lazy">
             </div>
           {%- endif -%}
           {%- if section.settings.image_2 != blank -%}
             <div class="gallery-thumb"
                  data-src="{{ section.settings.image_2 | image_url: width: 800 }}">
-              <img src="{{ section.settings.image_2 | image_url: width: 144 }}" alt="Product view 2" loading="lazy">
+              <img src="{{ section.settings.image_2 | image_url: width: 144 }}" alt="View 2" loading="lazy">
             </div>
           {%- endif -%}
           {%- if section.settings.image_3 != blank -%}
             <div class="gallery-thumb"
                  data-src="{{ section.settings.image_3 | image_url: width: 800 }}">
-              <img src="{{ section.settings.image_3 | image_url: width: 144 }}" alt="Product view 3" loading="lazy">
+              <img src="{{ section.settings.image_3 | image_url: width: 144 }}" alt="View 3" loading="lazy">
             </div>
           {%- endif -%}
           {%- if section.settings.image_4 != blank -%}
             <div class="gallery-thumb"
                  data-src="{{ section.settings.image_4 | image_url: width: 800 }}">
-              <img src="{{ section.settings.image_4 | image_url: width: 144 }}" alt="Product view 4" loading="lazy">
+              <img src="{{ section.settings.image_4 | image_url: width: 144 }}" alt="View 4" loading="lazy">
             </div>
           {%- endif -%}
         </div>
       </div>
 
-      <!-- Buy Form -->
-      <div class="buybox__form" data-reveal>
+      <!-- Buy Info -->
+      <div class="buybox__info" data-reveal>
+        <!-- Pre-order tag (top label) -->
         <span class="buybox__tag">
           {%- if settings.pre_order_mode -%}📦 Pre-Order — Ships {{ settings.pre_order_ship_date }}{%- else -%}✅ In Stock{%- endif -%}
         </span>
@@ -61,14 +53,26 @@
         <h2 class="buybox__title">{{ section.settings.product_title }}</h2>
         <p class="buybox__tagline">{{ section.settings.product_tagline }}</p>
 
+        <!-- Promo badge -->
+        {%- if settings.show_promo_badge and settings.pre_order_mode -%}
+        <div id="promoRibbon" style="display:inline-flex;align-items:center;gap:0.5rem;background:linear-gradient(90deg,#E07A5F,#F2A65A);color:#fff;font-family:var(--font-display);font-weight:800;font-size:0.9rem;padding:0.35rem 1rem;border-radius:999px;margin-bottom:0.75rem;box-shadow:0 3px 12px rgba(224,122,95,0.4);">
+          {{ settings.promo_badge_text }}
+        </div>
+        {%- endif -%}
+
+        <!-- Price -->
         <div class="buybox__price-row">
-          <span class="buybox__price">${{ section.settings.price }}</span>
-          <span class="buybox__price-note">+ shipping · Secure checkout</span>
+          <span class="buybox__price">
+            {%- if settings.show_promo_badge and settings.pre_order_mode and settings.original_price != blank -%}
+              <s style="opacity:0.5;font-size:1.1rem;font-weight:400;">${{ settings.original_price }}</s>
+            {%- endif -%}
+            ${{ settings.sale_price | default: section.settings.price }}
+          </span>
+          <span class="buybox__price-note">+ shipping</span>
         </div>
 
-        <div class="buybox__stock">
-          Only {{ settings.stock_display_count }} copies left at this price
-        </div>
+        <!-- Stock -->
+        <div class="buybox__stock">🔴 Only {{ settings.stock_display_count }} copies left at this price</div>
 
         <!-- Add to Cart / Pre-Order Button -->
         {%- if _product != blank -%}
@@ -78,9 +82,9 @@
                   data-variant-id="{{ _variant.id }}"
                   {%- if _variant.available == false -%} disabled {%- endif -%}>
             {%- if settings.pre_order_mode -%}
-              🐾 Pre-Order Now — ${{ section.settings.price }}
+              🐾 Pre-Order Now — {%- if settings.original_price != blank -%}<s style="opacity:0.6;font-weight:400;">${{ settings.original_price }}</s> {%- endif -%}${{ settings.sale_price }}
             {%- elsif _variant.available -%}
-              🛒 Buy Now — ${{ section.settings.price }}
+              🛒 Buy Now — ${{ settings.sale_price }}
             {%- else -%}
               Sold Out
             {%- endif -%}
@@ -88,19 +92,20 @@
         {%- else -%}
           <a href="{{ section.settings.buy_url | default: '/cart' }}"
              class="btn btn--primary btn--lg buybox__add-btn btn--pulse">
-            {%- if settings.pre_order_mode -%}🐾 Pre-Order Now — ${{ section.settings.price }}{%- else -%}🛒 Buy Now — ${{ section.settings.price }}{%- endif -%}
+            🐾 Pre-Order Now — {%- if settings.original_price != blank and settings.pre_order_mode -%}<s style="opacity:0.6;font-weight:400;">${{ settings.original_price }}</s> {%- endif -%}${{ settings.sale_price | default: section.settings.price }}
           </a>
         {%- endif -%}
 
         <!-- Guarantees -->
         <div class="buybox__guarantees">
-          <span class="guarantee-chip">🔒 Secure Checkout</span>
-          <span class="guarantee-chip">🌍 Worldwide Shipping</span>
-          <span class="guarantee-chip">📦 Ships {{ settings.pre_order_ship_date | default: 'June 2026' }}</span>
-          <span class="guarantee-chip">⭐ Satisfaction Guaranteed</span>
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'guarantee' -%}
+              <span class="guarantee-chip" {{ block.shopify_attributes }}>{{ block.settings.text }}</span>
+            {%- endif -%}
+          {%- endfor -%}
         </div>
 
-        <!-- Pre-order explainer -->
+        <!-- Pre-order explainer accordion -->
         {%- if settings.pre_order_mode -%}
         <div class="preorder-accordion">
           <button class="preorder-accordion__trigger" aria-expanded="false">
@@ -113,7 +118,7 @@
         </div>
         {%- endif -%}
 
-        <!-- Include in Box -->
+        <!-- What's in the box -->
         {%- if section.settings.whats_in_box != blank -%}
         <div style="margin-top:1.5rem;">
           <p style="font-family:var(--font-display);font-weight:700;margin-bottom:0.5rem;">📦 What's in the box:</p>
@@ -130,39 +135,33 @@
 {
   "name": "Product Buy Box",
   "settings": [
-    {
-      "type": "header", "content": "Product"
-    },
+    { "type": "header", "content": "Product" },
     {
       "type": "text", "id": "product_title",
       "label": "Product name",
       "default": "Whiskers Academy Card Game"
     },
     {
-      "type": "text", "id": "product_tagline",
+      "type": "textarea", "id": "product_tagline",
       "label": "Tagline (below title)",
       "default": "The expandable card game where cats chase their dream careers. For 2–6 players, ages 10+."
     },
     {
       "type": "text", "id": "price",
-      "label": "Display price (e.g. 29.99)",
-      "default": "29.99"
+      "label": "Fallback display price (if theme price settings are blank)",
+      "default": "23.99"
     },
     {
       "type": "url", "id": "buy_url",
-      "label": "Fallback Buy URL (if no Shopify product set up)",
+      "label": "Fallback Buy URL (if no Shopify product)",
       "default": "/cart"
     },
-    {
-      "type": "header", "content": "Gallery Images"
-    },
+    { "type": "header", "content": "Gallery Images (up to 4)" },
     { "type": "image_picker", "id": "image_1", "label": "Gallery image 1 (main)" },
     { "type": "image_picker", "id": "image_2", "label": "Gallery image 2" },
     { "type": "image_picker", "id": "image_3", "label": "Gallery image 3" },
     { "type": "image_picker", "id": "image_4", "label": "Gallery image 4" },
-    {
-      "type": "header", "content": "Pre-order Info"
-    },
+    { "type": "header", "content": "Pre-order Info" },
     {
       "type": "textarea", "id": "preorder_explainer",
       "label": "Pre-order explainer text",
@@ -174,6 +173,23 @@
       "default": "100+ illustrated cards · Rules booklet · Durable game box · Character reference cards"
     }
   ],
-  "presets": [{ "name": "Product Buy Box" }]
+  "blocks": [
+    {
+      "type": "guarantee",
+      "name": "Guarantee Badge",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Badge text", "default": "🔒 Secure Checkout" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Product Buy Box",
+    "blocks": [
+      { "type": "guarantee", "settings": { "text": "🔒 Secure Checkout" } },
+      { "type": "guarantee", "settings": { "text": "🌍 Worldwide Shipping" } },
+      { "type": "guarantee", "settings": { "text": "📦 Ships June 2026" } },
+      { "type": "guarantee", "settings": { "text": "⭐ Satisfaction Guaranteed" } }
+    ]
+  }]
 }
 {% endschema %}

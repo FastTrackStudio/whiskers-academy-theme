@@ -61,7 +61,7 @@
 
   <div class="sticky-cta" id="StickyCTA" aria-hidden="true">
     <a href="#buy-box" class="sticky-cta__btn">
-      {%- if settings.pre_order_mode -%}🎓 Pre-Order Now — $29.99{%- else -%}🛒 Buy Now — $29.99{%- endif -%}
+      {%- if settings.pre_order_mode -%}🎓 Pre-Order Now — ${{ settings.sale_price | default: '23.99' }}{%- else -%}🛒 Buy Now — ${{ settings.sale_price | default: '23.99' }}{%- endif -%}
     </a>
     <span class="sticky-cta__scarcity">Only {{ settings.stock_display_count | default: 47 }} copies left</span>
   </div>

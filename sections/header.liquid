@@ -28,7 +28,7 @@
     <!-- Header CTA -->
     <div class="site-header__cta">
       <a href="#buy-box" class="btn btn--primary btn--sm hide-mobile">
-        {%- if settings.pre_order_mode -%}Pre-Order — $29.99{%- else -%}Buy Now — $29.99{%- endif -%}
+        {%- if settings.pre_order_mode -%}Pre-Order — ${{ settings.sale_price | default: '23.99' }}{%- else -%}Buy Now — ${{ settings.sale_price | default: '23.99' }}{%- endif -%}
       </a>
       <button class="hamburger" id="Hamburger"
               aria-label="Open menu" aria-expanded="false" aria-controls="MobileNav">
@@ -49,7 +49,7 @@
     {%- endif -%}
   {%- endfor -%}
   <a href="#buy-box" class="btn btn--primary btn--pulse" style="margin-top:1rem;">
-    {%- if settings.pre_order_mode -%}🎓 Pre-Order — $29.99{%- else -%}🛒 Buy Now — $29.99{%- endif -%}
+    {%- if settings.pre_order_mode -%}🎓 Pre-Order — ${{ settings.sale_price | default: '23.99' }}{%- else -%}🛒 Buy Now — ${{ settings.sale_price | default: '23.99' }}{%- endif -%}
   </a>
 </nav>
 

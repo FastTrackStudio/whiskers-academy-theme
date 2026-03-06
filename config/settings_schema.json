@@ -4,13 +4,13 @@
         "settings": [
             {
                 "type": "header",
-                "content": "🎓 Pre-Order Settings"
+                "content": "🎓 Pre-Order & Pricing"
             },
             {
                 "type": "checkbox",
                 "id": "pre_order_mode",
                 "label": "Enable Pre-Order Mode",
-                "info": "Toggle between pre-order and live purchase mode. Flip this switch when the game ships — no code needed.",
+                "info": "Toggle between pre-order and live purchase mode. Flip when the game ships.",
                 "default": true
             },
             {
@@ -20,34 +20,66 @@
                 "default": "June 2026"
             },
             {
+                "type": "text",
+                "id": "original_price",
+                "label": "Original (strikethrough) price",
+                "info": "e.g. 29.99 — shown crossed out in promo mode",
+                "default": "29.99"
+            },
+            {
+                "type": "text",
+                "id": "sale_price",
+                "label": "Sale / Pre-order price",
+                "info": "e.g. 23.99 — the actual price customers pay",
+                "default": "23.99"
+            },
+            {
+                "type": "checkbox",
+                "id": "show_promo_badge",
+                "label": "Show 20% OFF promo badge",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "promo_badge_text",
+                "label": "Promo badge text",
+                "default": "🔥 20% OFF — Pre-Order Exclusive"
+            },
+            {
                 "type": "number",
                 "id": "stock_display_count",
-                "label": "Copies remaining (shown in scarcity bar)",
+                "label": "Copies remaining (scarcity bar)",
                 "info": "Display number — e.g. 47. Update manually when needed.",
                 "default": 47
             },
             {
+                "type": "number",
+                "id": "stock_total",
+                "label": "Total copies (scarcity bar)",
+                "default": 1000
+            },
+            {
                 "type": "text",
                 "id": "product_handle",
-                "label": "Product Handle",
-                "info": "The URL handle of your product. Find it in Products → edit product → SEO section.",
+                "label": "Shopify Product Handle",
+                "info": "Found in Products → edit product → SEO section. Leave blank to use manual pricing.",
                 "default": "whiskers-academy-card-game"
             },
             {
                 "type": "header",
-                "content": "📣 Meta Ads & SEO"
+                "content": "📣 SEO & Meta Ads"
             },
             {
                 "type": "text",
                 "id": "meta_pixel_id",
                 "label": "Meta Pixel ID",
-                "info": "Your Facebook / Meta Pixel ID (digits only, e.g. 1234567890123)"
+                "info": "Facebook / Meta Pixel ID (digits only)"
             },
             {
                 "type": "image_picker",
                 "id": "og_image",
                 "label": "Social Share Image (OG Image)",
-                "info": "Recommended 1200×630 px. Shown when your store link is shared on Facebook/Instagram/WhatsApp."
+                "info": "Recommended 1200×630 px"
             },
             {
                 "type": "textarea",
@@ -62,18 +94,18 @@
             {
                 "type": "image_picker",
                 "id": "logo_dark",
-                "label": "Logo — Dark version (on light backgrounds)"
+                "label": "Logo — Dark (on light backgrounds)"
             },
             {
                 "type": "image_picker",
                 "id": "logo_light",
-                "label": "Logo — Light / White version (on dark backgrounds)"
+                "label": "Logo — Light / White (on dark backgrounds)"
             },
             {
                 "type": "image_picker",
                 "id": "favicon",
                 "label": "Favicon",
-                "info": "Shown in browser tab. Use a square PNG, minimum 32×32 px."
+                "info": "Square PNG, minimum 32×32 px"
             },
             {
                 "type": "header",
@@ -86,18 +118,13 @@
             },
             {
                 "type": "url",
-                "id": "tiktok_url",
-                "label": "TikTok URL"
-            },
-            {
-                "type": "url",
                 "id": "youtube_url",
-                "label": "YouTube / Trailer URL"
+                "label": "YouTube URL"
             },
             {
                 "type": "url",
-                "id": "kickstarter_url",
-                "label": "Kickstarter URL"
+                "id": "facebook_url",
+                "label": "Facebook URL"
             }
         ]
     }
