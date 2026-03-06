@@ -27,14 +27,24 @@
         </div>
       </div>
 
-      <!-- Links -->
       <nav aria-label="Footer navigation">
         <div class="footer-links" style="flex-direction:column;gap:0.75rem;">
-          {%- for block in section.blocks -%}
-            {%- if block.type == 'link' -%}
-              <a href="{{ block.settings.url }}" class="footer-link" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
-            {%- endif -%}
-          {%- endfor -%}
+          {%- if section.blocks.size > 0 -%}
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'link' -%}
+                <a href="{{ block.settings.url }}" class="footer-link" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
+              {%- endif -%}
+            {%- endfor -%}
+          {%- else -%}
+            <a href="#buy-box" class="footer-link">Pre-Order</a>
+            <a href="#how-to-play" class="footer-link">How to Play</a>
+            <a href="#characters" class="footer-link">The Cats</a>
+            <a href="#founders" class="footer-link">About Us</a>
+            <a href="#faq" class="footer-link">FAQ</a>
+            <a href="/policies/privacy-policy" class="footer-link">Privacy Policy</a>
+            <a href="/policies/refund-policy" class="footer-link">Refund Policy</a>
+            <a href="mailto:hello@thewhiskersacademy.com" class="footer-link">Contact</a>
+          {%- endif -%}
         </div>
       </nav>
 

@@ -1998,3 +1998,317 @@ p {
         display: none !important;
     }
 }
+
+/* ============================================================
+   THEME DESIGN — pill header, mobile fixes, visual polish
+   ============================================================ */
+
+/* ── Floating pill header ── */
+.site-header {
+    width: calc(100% - 2rem);
+    max-width: 1200px;
+    margin-inline: auto;
+    margin-top: 0.6rem;
+    height: auto;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    border-bottom: none;
+    padding: 0.6rem 2rem;
+    z-index: 200;
+}
+
+.site-header__inner {
+    max-width: 100%;
+    padding-inline: 0;
+}
+
+/* Hero overlaps behind pill header */
+.hero {
+    margin-top: -5rem;
+    padding-top: 6rem;
+    min-height: 70vh;
+}
+
+.hero__content {
+    padding-block: var(--space-12) !important;
+}
+
+/* Hero title */
+.hero__title {
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.5);
+}
+
+.hero__title .accent {
+    color: var(--color-accent);
+    -webkit-text-fill-color: unset;
+    background: none;
+    animation: none;
+}
+
+/* Hero sub stays white on dark bg */
+.hero__sub {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Feature row visual */
+.feature-row__visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-row__visual img {
+    border-radius: var(--radius-lg);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Nav font */
+.site-nav__link {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* Footer links grid */
+.footer-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem 2rem;
+}
+
+/* Section sub text — darker for legibility */
+.buybox__tagline,
+.section-sub,
+.feature-row__body,
+.founders__bio {
+    color: #2D2D2D !important;
+}
+
+/* Remove quote-mark overlapping stars */
+.testimonial-card::before,
+.testimonial-card__stars::before {
+    display: none !important;
+    content: none !important;
+}
+
+/* Section eyebrow */
+.section-eyebrow {
+    font-size: 1.5rem !important;
+    letter-spacing: 0.06em;
+}
+
+/* Social pill */
+.social-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.4rem;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    color: white;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.social-pill:hover {
+    background: rgba(255, 255, 255, 0.28);
+    border-color: rgba(255, 255, 255, 0.7);
+    transform: translateY(-2px);
+    color: white;
+}
+
+/* ── Mobile ── */
+@media (max-width: 640px) {
+
+    .hero__content {
+        text-align: center;
+    }
+
+    .hero__eyebrow {
+        justify-content: center;
+    }
+
+    .hero__actions {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .hero__actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero__title {
+        font-size: clamp(2.4rem, 10vw, 3.2rem);
+    }
+
+    /* Stats bar — 2×2 grid */
+    .game-stats {
+        overflow: hidden;
+    }
+
+    .game-stats__inner {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    .stat-divider {
+        display: none;
+    }
+
+    .stat-tile {
+        padding: 1.25rem 0.5rem;
+        justify-content: center;
+        text-align: center;
+        border-right: none;
+    }
+
+    .stat-tile:nth-child(odd) {
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .stat-tile:nth-child(1),
+    .stat-tile:nth-child(3) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Buybox — single column */
+    .buybox__inner {
+        flex-direction: column !important;
+    }
+
+    .buybox__gallery {
+        width: 100% !important;
+        max-width: 100%;
+    }
+
+    .buybox__info {
+        width: 100% !important;
+        text-align: center;
+    }
+
+    .buybox__price-row {
+        justify-content: center;
+    }
+
+    .buybox__guarantees {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .buybox__stock {
+        text-align: center;
+    }
+
+    /* Feature rows */
+    .feature-row {
+        flex-direction: column !important;
+        text-align: center;
+    }
+
+    .feature-row__media {
+        margin: 0 auto;
+    }
+
+    /* Section headers */
+    .section-header {
+        text-align: center;
+    }
+
+    /* Founders */
+    .founders__inner {
+        flex-direction: column !important;
+        text-align: center;
+    }
+
+    .founders__photo {
+        margin: 0 auto;
+    }
+
+    /* Sticky CTA */
+    .sticky-cta {
+        flex-direction: column !important;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .sticky-cta__btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .sticky-cta__scarcity {
+        text-align: center;
+    }
+
+    /* Comparisons & Testimonials */
+    .comparisons-grid {
+        grid-template-columns: 1fr 1fr !important;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Footer */
+    .social-links {
+        justify-content: center !important;
+    }
+
+    .site-footer__inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .site-footer__logo {
+        margin: 0 auto;
+    }
+
+    .site-footer__tagline {
+        text-align: center;
+        max-width: none !important;
+        margin-inline: 0;
+    }
+
+    /* Gallery thumbnails */
+    .gallery-thumbs {
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        gap: 0.5rem !important;
+    }
+
+    .gallery-thumbs img,
+    .gallery-thumb {
+        width: 60px !important;
+        height: 60px !important;
+        object-fit: cover;
+    }
+
+    /* Hide announcement bar on mobile */
+    .announcement-bar {
+        display: none !important;
+    }
+
+    /* Promo badge — centered */
+    #promoRibbon {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: flex !important;
+        justify-content: center;
+    }
+}
