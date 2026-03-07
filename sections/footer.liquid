@@ -28,7 +28,7 @@
       </div>
 
       <nav aria-label="Footer navigation">
-        <div class="footer-links" style="flex-direction:column;gap:0.75rem;">
+        <div class="footer-links" style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 2rem;">
           {%- if section.blocks.size > 0 -%}
             {%- for block in section.blocks -%}
               {%- if block.type == 'link' -%}

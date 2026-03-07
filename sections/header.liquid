@@ -16,13 +16,20 @@
 
     <!-- Desktop Nav -->
     <nav class="site-nav" aria-label="Main navigation">
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'nav_link' -%}
-          <a href="{{ block.settings.url }}" class="site-nav__link" {{ block.shopify_attributes }}>
-            {{ block.settings.label }}
-          </a>
-        {%- endif -%}
-      {%- endfor -%}
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'nav_link' -%}
+            <a href="{{ block.settings.url }}" class="site-nav__link" {{ block.shopify_attributes }}>
+              {{ block.settings.label }}
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- else -%}
+        <a href="#how-to-play" class="site-nav__link">How to Play</a>
+        <a href="#characters"  class="site-nav__link">The Cats</a>
+        <a href="#founders"    class="site-nav__link">About Us</a>
+        <a href="#faq"         class="site-nav__link">FAQ</a>
+      {%- endif -%}
     </nav>
 
     <!-- Header CTA -->
@@ -41,13 +48,20 @@
 
 <!-- Mobile Nav -->
 <nav class="mobile-nav" id="MobileNav" aria-label="Mobile navigation">
-  {%- for block in section.blocks -%}
-    {%- if block.type == 'nav_link' -%}
-      <a href="{{ block.settings.url }}" class="site-nav__link" {{ block.shopify_attributes }}>
-        {{ block.settings.label }}
-      </a>
-    {%- endif -%}
-  {%- endfor -%}
+  {%- if section.blocks.size > 0 -%}
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'nav_link' -%}
+        <a href="{{ block.settings.url }}" class="site-nav__link" {{ block.shopify_attributes }}>
+          {{ block.settings.label }}
+        </a>
+      {%- endif -%}
+    {%- endfor -%}
+  {%- else -%}
+    <a href="#how-to-play" class="site-nav__link">How to Play</a>
+    <a href="#characters"  class="site-nav__link">The Cats</a>
+    <a href="#founders"    class="site-nav__link">About Us</a>
+    <a href="#faq"         class="site-nav__link">FAQ</a>
+  {%- endif -%}
   <a href="#buy-box" class="btn btn--primary btn--pulse" style="margin-top:1rem;">
     {%- if settings.pre_order_mode -%}🎓 Pre-Order — ${{ settings.sale_price | default: '23.99' }}{%- else -%}🛒 Buy Now — ${{ settings.sale_price | default: '23.99' }}{%- endif -%}
   </a>
