@@ -2312,11 +2312,19 @@ p {
         justify-content: center;
     }
 
-    /* ── Hero badge pills ── */
+    /* ── Hero badge pills — hidden on mobile ── */
     .hero__eyebrow {
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: var(--space-2) !important;
+        display: none !important;
+    }
+
+    /* ── Hero CTA button — centered text, more breathing room ── */
+    .hero__actions .btn--primary,
+    .hero__actions .btn--lg {
+        text-align: center !important;
+        justify-content: center !important;
+        padding-left: var(--space-6) !important;
+        padding-right: var(--space-6) !important;
+        width: 100% !important;
     }
 
     .hero__badge {
