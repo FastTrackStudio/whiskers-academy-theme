@@ -433,6 +433,8 @@
     "second-cta": {
       "type": "second-cta",
       "settings": {
+        "bg_image": "shopify://shop_images/Gameplay_With_Simon.jpg",
+        "overlay_opacity": 70,
         "eyebrow": "Don't Miss Out",
         "heading": "Class Is About to Begin 🎓",
         "subheading": "Pre-order your copy now. Limited first edition. Ships June 2026.",
