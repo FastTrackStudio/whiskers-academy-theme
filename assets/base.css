@@ -2560,25 +2560,62 @@ p {
 
     .founders__story {
         width: 100% !important;
+        max-width: 100% !important;
         text-align: center !important;
-    }
-
-    .founders__bio {
-        max-width: 100% !important;
-        margin-inline: auto !important;
-        overflow-wrap: break-word !important;
-    }
-
-    .founders__story {
-        width: 100% !important;
-        max-width: 100% !important;
         overflow-wrap: break-word !important;
         word-break: break-word !important;
     }
 
     .founders__bio {
         max-width: 100% !important;
+        text-align: center !important;
+        margin-inline: auto !important;
         overflow-wrap: break-word !important;
+        word-break: break-word !important;
+    }
+
+    /* ── Feature rows — center text content on mobile ── */
+    .feature-row__text {
+        text-align: center !important;
+    }
+
+    .feature-row__number {
+        text-align: center !important;
+    }
+
+    .feature-row__title {
+        text-align: center !important;
+    }
+
+    .feature-row__body {
+        text-align: center !important;
+        padding: 0 !important;
+    }
+
+    .feature-list {
+        align-items: center !important;
+        text-align: left !important;
+        /* keep bullet text left-aligned, just center the list block */
+        max-width: max-content !important;
+        margin-inline: auto !important;
+    }
+
+    /* ── Footer — center on mobile ── */
+    .site-footer__inner {
+        text-align: center !important;
+    }
+
+    .site-footer__tagline {
+        margin-inline: auto !important;
+    }
+
+    .footer-links {
+        justify-content: center !important;
+    }
+
+    .site-footer__bottom {
+        flex-direction: column !important;
+        text-align: center !important;
     }
 
     /* ── Comparisons section — no overflow scroll ── */
