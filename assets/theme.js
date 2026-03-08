@@ -206,7 +206,8 @@
         });
     }
 
-    /* ─── 12. Shopify Add to Cart (AJAX) ──────────── */
+    /* ─── 12. Shopify — Direct to Checkout ─────────── */
+    // Single-product store: skip cart, go straight to checkout
     const shopifyAddBtn = qs('[data-add-to-cart]');
     if (shopifyAddBtn) {
         shopifyAddBtn.addEventListener('click', async e => {
@@ -214,7 +215,7 @@
             const variantId = shopifyAddBtn.dataset.variantId;
             if (!variantId) return;
 
-            shopifyAddBtn.textContent = 'Adding…';
+            shopifyAddBtn.textContent = 'Going to checkout…';
             shopifyAddBtn.disabled = true;
 
             try {
@@ -224,16 +225,13 @@
                     body: JSON.stringify({ id: variantId, quantity: 1 })
                 });
                 if (res.ok) {
-                    shopifyAddBtn.textContent = '✓ Added to Cart!';
                     firePixel('AddToCart', {
                         content_name: 'Whiskers Academy Card Game',
                         value: 29.99,
                         currency: 'USD'
                     });
-                    setTimeout(() => {
-                        window.location.href = '/checkout';
-                        firePixel('InitiateCheckout', { value: 29.99, currency: 'USD' });
-                    }, 500);
+                    firePixel('InitiateCheckout', { value: 29.99, currency: 'USD' });
+                    window.location.href = '/checkout';
                 } else {
                     shopifyAddBtn.textContent = 'Error — Try Again';
                     shopifyAddBtn.disabled = false;

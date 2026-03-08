@@ -1,10 +1,10 @@
 <section class="second-cta section-pad" id="join-academy">
   <div class="container">
     <div class="second-cta__inner">
-      <div data-reveal>
-        <span class="section-eyebrow" style="color:var(--color-primary-light);">{{ section.settings.eyebrow }}</span>
-        <h2 class="second-cta__title">{{ section.settings.heading }}</h2>
-        <p class="second-cta__sub">{{ section.settings.subheading }}</p>
+      <div data-reveal style="text-align:center;">
+        <span class="section-eyebrow" style="color:var(--color-primary-light);display:block;text-align:center;">{{ section.settings.eyebrow }}</span>
+        <h2 class="second-cta__title" style="text-align:center;">{{ section.settings.heading }}</h2>
+        <p class="second-cta__sub" style="text-align:center;margin-inline:auto;">{{ section.settings.subheading }}</p>
       </div>
 
       <div class="second-cta__actions" data-reveal>
@@ -23,9 +23,9 @@
       </div>
 
       {%- if section.settings.show_email_form -%}
-      <div data-reveal>
-        <p style="color:rgba(255,255,255,0.6);font-size:var(--text-sm);margin-bottom:var(--space-4);text-align:center;">{{ section.settings.email_cta }}</p>
-        <form class="email-form" action="#" method="post" novalidate>
+      <div class="text-center" data-reveal style="text-align:center;">
+        <p style="color:rgba(255,255,255,0.6);font-size:var(--text-sm);margin-bottom:var(--space-4);text-align:center;margin-inline:auto;">{{ section.settings.email_cta }}</p>
+        <form class="email-form" action="#" method="post" novalidate style="margin-inline:auto;">
           <input class="email-form__input"
                  type="email"
                  name="email"
@@ -34,7 +34,7 @@
                  required>
           <button class="email-form__btn" type="submit">{{ section.settings.email_btn }}</button>
         </form>
-        <p style="color:rgba(255,255,255,0.35);font-size:var(--text-xs);margin-top:var(--space-3);text-align:center;">No spam. Unsubscribe anytime.</p>
+        <p style="color:rgba(255,255,255,0.35);font-size:var(--text-xs);margin-top:var(--space-3);text-align:center;margin-inline:auto;">No spam. Unsubscribe anytime.</p>
       </div>
       {%- endif -%}
 

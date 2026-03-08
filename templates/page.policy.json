@@ -1,0 +1,23 @@
+{
+    "sections": {
+        "header": {
+            "type": "header",
+            "disabled": true,
+            "settings": {}
+        },
+        "policy": {
+            "type": "page-policy",
+            "settings": {}
+        },
+        "footer": {
+            "type": "footer",
+            "disabled": true,
+            "settings": {}
+        }
+    },
+    "order": [
+        "header",
+        "policy",
+        "footer"
+    ]
+}

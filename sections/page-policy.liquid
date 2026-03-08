@@ -1,0 +1,20 @@
+<section class="section-pad" style="background:var(--color-white);" id="page-policy">
+  <div class="container container--narrow">
+    <h1 style="font-family:var(--font-display);font-size:clamp(1.75rem,4vw,2.5rem);font-weight:800;color:var(--color-dark);margin-bottom:var(--space-8);">
+      {{ page.title }}
+    </h1>
+    <div class="policy-content" style="color:var(--color-dark-mid);line-height:1.8;font-size:var(--text-base);">
+      {{ page.content }}
+    </div>
+    <div style="margin-top:var(--space-12);padding-top:var(--space-8);border-top:1px solid var(--color-border);">
+      <a href="/" style="color:var(--color-primary);font-weight:700;font-family:var(--font-display);">← Back to Whiskers Academy</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Policy Page",
+  "presets": [{ "name": "Policy Page" }]
+}
+{% endschema %}

@@ -2312,3 +2312,47 @@ p {
         justify-content: center;
     }
 }
+
+/* ============================================================
+   24. POLICY PAGE
+   ============================================================ */
+.policy-content h1,
+.policy-content h2,
+.policy-content h3 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: var(--color-dark);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-4);
+}
+
+.policy-content h2 {
+    font-size: var(--text-2xl);
+}
+
+.policy-content h3 {
+    font-size: var(--text-xl);
+}
+
+.policy-content p {
+    margin-bottom: var(--space-4);
+    max-width: none;
+    color: var(--color-dark-mid);
+}
+
+.policy-content ul,
+.policy-content ol {
+    list-style: disc;
+    padding-left: var(--space-6);
+    margin-bottom: var(--space-4);
+}
+
+.policy-content li {
+    margin-bottom: var(--space-2);
+    color: var(--color-dark-mid);
+}
+
+.policy-content a {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
