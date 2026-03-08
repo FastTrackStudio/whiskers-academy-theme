@@ -1,13 +1,50 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "current": {
-        "pre_order_mode": true,
-        "pre_order_ship_date": "June 2026",
-        "original_price": "29.99",
-        "sale_price": "23.99",
-        "show_promo_badge": true,
-        "promo_badge_text": "🔥 20% OFF — Pre-Order Exclusive",
-        "stock_display_count": 47,
-        "stock_total": 1000,
-        "product_handle": "whiskers-academy-card-game"
-    }
+  "current": {
+    "pre_order_mode": true,
+    "pre_order_ship_date": "June 2026",
+    "original_price": "29.99",
+    "sale_price": "23.99",
+    "show_promo_badge": true,
+    "promo_badge_text": "🔥 20% OFF — Pre-Order Exclusive",
+    "stock_display_count": 47,
+    "stock_total": 1000,
+    "product_handle": "whiskers-academy-card-game",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "show_bar": true,
+          "badge_text": "🎓 PRE-ORDER",
+          "message": "Paws Up — Limited First Edition. Estimated Shipping June 2026.",
+          "show_scarcity": true,
+          "scarcity_text": "Only [count] copies left at this price!",
+          "link_text": "",
+          "link_url": ""
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {}
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "tagline": "The cat card game that treats strategy and chaos like lab partners.\nFor cat lovers, board game fans, and anyone who's dreamed of graduating with honors.",
+          "copyright_note": "Made with 🐾 by two humans and their cats.",
+          "privacy_policy_url": "shopify://policies/privacy-policy",
+          "refund_policy_url": "shopify://policies/refund-policy"
+        }
+      }
+    },
+    "content_for_index": []
+  }
 }
