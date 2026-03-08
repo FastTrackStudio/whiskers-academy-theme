@@ -19,8 +19,8 @@
     </div>
 
     {%- if section.settings.closing_text != blank -%}
-    <div class="text-center" style="margin-top:var(--space-8);" data-reveal>
-      <p style="color:rgba(255,255,255,0.8);font-size:var(--text-xl);font-weight:600;font-family:var(--font-display);text-align:center;margin-inline:auto;">
+    <div style="margin-top:var(--space-8);text-align:center;" data-reveal>
+      <p style="color:rgba(255,255,255,0.8);font-size:var(--text-xl);font-weight:600;font-family:var(--font-display);text-align:center;margin-inline:auto;max-width:none;width:100%;">
         {{ section.settings.closing_text }}
       </p>
     </div>

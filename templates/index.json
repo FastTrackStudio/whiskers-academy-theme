@@ -278,7 +278,10 @@
                 "game-5",
                 "game-6"
             ],
-            "settings": {}
+            "settings": {
+                "subheading": "",
+                "closing_text": "Light on setup, big on personality, deep enough to reward clever play."
+            }
         },
         "founders": {
             "type": "founder-story",
