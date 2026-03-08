@@ -7,7 +7,8 @@
         {%- if section.settings.photo != blank -%}
           <img src="{{ section.settings.photo | image_url: width: 800 }}"
                alt="{{ section.settings.photo_alt | default: 'Emiel and Lisa, creators of Whiskers Academy' }}"
-               width="800" loading="lazy">
+               width="800" loading="lazy"
+               style="aspect-ratio:4/5;width:100%;object-fit:cover;border-radius:var(--radius-xl);display:block;">
         {%- else -%}
           <div style="aspect-ratio:4/5;background:linear-gradient(160deg,var(--color-primary-light),var(--color-cream));border-radius:var(--radius-xl);display:flex;align-items:center;justify-content:center;font-size:6rem;">👩‍💼🐱👨‍💼</div>
         {%- endif -%}
