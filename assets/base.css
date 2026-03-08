@@ -2541,6 +2541,7 @@ p {
     }
 
     .founders__inner {
+        display: flex !important;
         overflow: visible !important;
         width: 100% !important;
         max-width: 100% !important;
@@ -2554,10 +2555,18 @@ p {
         width: 100% !important;
         max-width: 320px !important;
         margin-inline: auto !important;
+        flex-shrink: 0 !important;
     }
 
     .founders__story {
+        width: 100% !important;
         text-align: center !important;
+    }
+
+    .founders__bio {
+        max-width: 100% !important;
+        margin-inline: auto !important;
+        overflow-wrap: break-word !important;
     }
 
     .founders__story {
