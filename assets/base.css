@@ -2382,22 +2382,44 @@ p {
     }
 
     /* ── Prevent any element from overflowing the viewport horizontally ── */
-    .container,
-    .section-pad,
-    section {
-        max-width: 100vw !important;
-        overflow-x: hidden !important;
+    /* ── Contain overflow on most sections (NOT characters which needs scroll) ── */
+    .section-pad:not(#characters),
+    .container {
+        max-width: 100% !important;
     }
 
-    /* ── Comparison chips — single column if very narrow ── */
-    .comparison-chip {
-        font-size: var(--text-base) !important;
-        padding: var(--space-2) var(--space-4) !important;
+    /* ── Characters section — allow horizontal scroll, DON'T clip ── */
+    #characters {
+        overflow: visible !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
     }
 
-    /* ── Character strip — ensure it doesn't overflow ── */
+    #characters .container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        max-width: 100% !important;
+    }
+
+    #characters .section-header {
+        padding-left: var(--space-4) !important;
+        padding-right: var(--space-4) !important;
+    }
+
+    /* ── Character strip — swipeable, cards fully visible ── */
     .characters-strip {
+        padding-left: var(--space-4) !important;
+        padding-right: var(--space-4) !important;
         padding-bottom: var(--space-4) !important;
+
+        /* Add scroll-padding so card snaps with margin */
+        scroll-padding-left: var(--space-4);
+    }
+
+    /* button wrapper inside characters */
+    #characters>.container>div[style] {
+        padding-left: var(--space-4) !important;
+        padding-right: var(--space-4) !important;
     }
 
     /* ── Gallery main image — proper aspect ratio ── */
@@ -2513,14 +2535,16 @@ p {
         justify-content: center !important;
     }
 
-    /* ── Founders section — prevent overflow on mobile ── */
+    /* ── Founders section — prevent content overflow on mobile ── */
     .founders {
-        overflow: hidden !important;
+        overflow: visible !important;
     }
 
     .founders__inner {
-        overflow: hidden !important;
+        overflow: visible !important;
         width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     .founders__story {
