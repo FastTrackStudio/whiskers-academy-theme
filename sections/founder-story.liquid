@@ -8,9 +8,9 @@
           <img src="{{ section.settings.photo | image_url: width: 800 }}"
                alt="{{ section.settings.photo_alt | default: 'Emiel and Lisa, creators of Whiskers Academy' }}"
                width="800" loading="lazy"
-               style="aspect-ratio:4/5;width:100%;object-fit:cover;border-radius:var(--radius-xl);display:block;">
+               style="aspect-ratio:1/1;width:100%;max-width:100%;object-fit:cover;border-radius:var(--radius-xl);display:block;">
         {%- else -%}
-          <div style="aspect-ratio:4/5;background:linear-gradient(160deg,var(--color-primary-light),var(--color-cream));border-radius:var(--radius-xl);display:flex;align-items:center;justify-content:center;font-size:6rem;">👩‍💼🐱👨‍💼</div>
+          <div style="aspect-ratio:1/1;width:100%;max-width:100%;background:linear-gradient(160deg,var(--color-primary-light),var(--color-cream));border-radius:var(--radius-xl);display:flex;align-items:center;justify-content:center;font-size:6rem;">👩‍💼🐱👨‍💼</div>
         {%- endif -%}
         {%- if section.settings.badge_text != blank -%}
         <div class="founders__photo-badge">
