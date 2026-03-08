@@ -24,7 +24,7 @@
 
       {%- if section.settings.show_email_form -%}
       <div data-reveal>
-        <p style="color:rgba(255,255,255,0.6);font-size:var(--text-sm);margin-bottom:var(--space-4);">{{ section.settings.email_cta }}</p>
+        <p style="color:rgba(255,255,255,0.6);font-size:var(--text-sm);margin-bottom:var(--space-4);text-align:center;">{{ section.settings.email_cta }}</p>
         <form class="email-form" action="#" method="post" novalidate>
           <input class="email-form__input"
                  type="email"
@@ -34,7 +34,7 @@
                  required>
           <button class="email-form__btn" type="submit">{{ section.settings.email_btn }}</button>
         </form>
-        <p style="color:rgba(255,255,255,0.35);font-size:var(--text-xs);margin-top:var(--space-3);">No spam. Unsubscribe anytime.</p>
+        <p style="color:rgba(255,255,255,0.35);font-size:var(--text-xs);margin-top:var(--space-3);text-align:center;">No spam. Unsubscribe anytime.</p>
       </div>
       {%- endif -%}
 

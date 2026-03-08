@@ -22,7 +22,7 @@
     </div>
 
     {%- if section.settings.footer_text != blank -%}
-    <p style="text-align:center;margin-top:var(--space-8);color:var(--color-mid);font-size:var(--text-sm);" data-reveal>
+    <p style="text-align:center;margin-inline:auto;margin-top:var(--space-8);color:var(--color-mid);font-size:var(--text-sm);" data-reveal>
       {{ section.settings.footer_text }}
       {%- if section.settings.contact_email != blank -%}
         <a href="mailto:{{ section.settings.contact_email }}" style="color:var(--color-primary);font-weight:700;">{{ section.settings.contact_email }}</a>

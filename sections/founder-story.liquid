@@ -29,7 +29,7 @@
         {%- endfor -%}
         {%- if section.settings.show_cta -%}
         <a href="#buy-box" class="btn btn--teal">
-          🐾 Support Our Game — Pre-Order $29.99
+          🐾 Support Our Game — Pre-Order {%- if settings.original_price != blank -%}<s style="opacity:0.6;font-weight:400">${{ settings.original_price }}</s> {%- endif -%}${{ settings.sale_price | default: '23.99' }}
         </a>
         {%- endif -%}
       </div>

@@ -3,13 +3,6 @@
         "hero": {
             "type": "hero",
             "blocks": {
-                "trust-1": {
-                    "type": "trust_badge",
-                    "settings": {
-                        "icon": "⭐",
-                        "text": "Loved by 200+ early players"
-                    }
-                },
                 "trust-2": {
                     "type": "trust_badge",
                     "settings": {
@@ -33,7 +26,6 @@
                 }
             },
             "block_order": [
-                "trust-1",
                 "trust-2",
                 "trust-3",
                 "trust-4"
