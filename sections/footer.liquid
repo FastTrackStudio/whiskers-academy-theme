@@ -41,9 +41,12 @@
             <a href="#characters" class="footer-link">The Cats</a>
             <a href="#founders" class="footer-link">About Us</a>
             <a href="#faq" class="footer-link">FAQ</a>
-            <a href="/policies/privacy-policy" class="footer-link">Privacy Policy</a>
-            <a href="/policies/refund-policy" class="footer-link">Refund Policy</a>
-
+            {%- if section.settings.privacy_policy_url != blank -%}
+              <a href="{{ section.settings.privacy_policy_url }}" class="footer-link">Privacy Policy</a>
+            {%- endif -%}
+            {%- if section.settings.refund_policy_url != blank -%}
+              <a href="{{ section.settings.refund_policy_url }}" class="footer-link">Refund Policy</a>
+            {%- endif -%}
             <a href="mailto:hello@thewhiskersacademy.com" class="footer-link">Contact</a>
           {%- endif -%}
         </div>
@@ -71,8 +74,11 @@
 {
   "name": "Footer",
   "settings": [
-    { "type": "textarea", "id": "tagline",        "label": "Brand tagline",    "default": "The cat card game that treats strategy and chaos like lab partners.\nFor cat lovers, board game fans, and anyone who's dreamed of graduating with honors." },
-    { "type": "text",     "id": "copyright_note", "label": "Copyright note",   "default": "Made with 🐾 by two humans and their cats." }
+    { "type": "textarea", "id": "tagline",            "label": "Brand tagline",      "default": "The cat card game that treats strategy and chaos like lab partners.\nFor cat lovers, board game fans, and anyone who's dreamed of graduating with honors." },
+    { "type": "text",     "id": "copyright_note",     "label": "Copyright note",     "default": "Made with 🐾 by two humans and their cats." },
+    { "type": "header",   "content": "Policy Pages" },
+    { "type": "url",      "id": "privacy_policy_url", "label": "Privacy Policy page" },
+    { "type": "url",      "id": "refund_policy_url",  "label": "Refund Policy page" }
   ],
   "blocks": [
     {
