@@ -1,5 +1,9 @@
-<section class="second-cta section-pad" id="join-academy">
-  <div class="container">
+<section class="second-cta section-pad" id="join-academy" style="position:relative;overflow:hidden;">
+  {%- if section.settings.bg_image != blank -%}
+    <div style="position:absolute;inset:0;background-image:url('{{ section.settings.bg_image | image_url: width: 1920 }}');background-size:cover;background-position:center;z-index:0;"></div>
+    <div style="position:absolute;inset:0;background:rgba(0,0,0,{{ section.settings.overlay_opacity | default: 55 | divided_by: 100.0 }});z-index:1;"></div>
+  {%- endif -%}
+  <div class="container" style="position:relative;z-index:2;">
     <div class="second-cta__inner">
       <div data-reveal style="text-align:center;">
         <span class="section-eyebrow" style="color:var(--color-primary-light);display:block;text-align:center;">{{ section.settings.eyebrow }}</span>
@@ -60,10 +64,13 @@
   </div>
 </section>
 
+
 {% schema %}
 {
   "name": "Second CTA",
   "settings": [
+    { "type": "image_picker", "id": "bg_image",          "label": "Background image" },
+    { "type": "range",        "id": "overlay_opacity",   "label": "Image overlay darkness", "min": 0, "max": 90, "step": 5, "default": 55, "unit": "%" },
     { "type": "text",     "id": "eyebrow",           "label": "Eyebrow",              "default": "Don't Miss Out" },
     { "type": "text",     "id": "heading",           "label": "Heading",              "default": "Class Is About to Begin 🎓" },
     { "type": "textarea", "id": "subheading",        "label": "Subheading",           "default": "Pre-order your copy now. Limited first edition. Ships June 2026." },
@@ -75,3 +82,4 @@
   "presets": [{ "name": "Second CTA" }]
 }
 {% endschema %}
+
