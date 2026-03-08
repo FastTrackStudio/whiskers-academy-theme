@@ -2435,7 +2435,99 @@ p {
         padding-left: var(--space-4) !important;
         padding-right: var(--space-4) !important;
     }
+
+    /* ── Trust badges — 2 per row, 3rd centered ── */
+    .hero__trust {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: var(--space-3) !important;
+        justify-items: start !important;
+    }
+
+    .hero__trust .trust-badge:last-child:nth-child(odd) {
+        grid-column: 1 / -1 !important;
+        justify-self: center !important;
+    }
+
+    /* ── Character strip — swipeable carousel, no scrollbar ── */
+    .characters-strip {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: scroll !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+        gap: var(--space-4) !important;
+        padding-bottom: var(--space-2) !important;
+        /* hide scrollbar */
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+
+    .characters-strip::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .character-card {
+        min-width: calc(85vw) !important;
+        max-width: calc(85vw) !important;
+        scroll-snap-align: center !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* ── Character + founder CTA buttons — shrink text to fit ── */
+    .characters section .btn--teal,
+    .founders .btn--teal {
+        font-size: var(--text-sm) !important;
+        padding-left: var(--space-4) !important;
+        padding-right: var(--space-4) !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
+    }
+
+    /* ── Second CTA buy button — shrink text to fit on mobile ── */
+    .second-cta__actions .btn--primary {
+        font-size: var(--text-sm) !important;
+        padding-left: var(--space-4) !important;
+        padding-right: var(--space-4) !important;
+        white-space: nowrap !important;
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
+    }
+
+    /* ── Founders section — prevent overflow on mobile ── */
+    .founders {
+        overflow: hidden !important;
+    }
+
+    .founders__inner {
+        overflow: hidden !important;
+        width: 100% !important;
+    }
+
+    .founders__story {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-wrap: break-word !important;
+        word-break: break-word !important;
+    }
+
+    .founders__bio {
+        max-width: 100% !important;
+        overflow-wrap: break-word !important;
+    }
+
+    /* ── Comparisons section — no overflow scroll ── */
+    .comparisons,
+    .comparisons-grid {
+        overflow: hidden !important;
+    }
 }
+
 
 
 /* ============================================================
