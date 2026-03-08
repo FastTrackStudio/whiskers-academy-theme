@@ -27,7 +27,7 @@
 
     <div style="text-align:center;margin-top:var(--space-8);" data-reveal>
       <a href="#buy-box" class="btn btn--teal">
-        🎓 Get Your Copy — $29.99
+        🎓 Get Your Copy — {%- if settings.original_price != blank and settings.pre_order_mode -%}<s style="opacity:0.6;font-weight:400">${{ settings.original_price }}</s> {%- endif -%}${{ settings.sale_price | default: '23.99' }}
       </a>
     </div>
   </div>
