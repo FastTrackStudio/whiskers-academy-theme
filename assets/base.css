@@ -2510,18 +2510,18 @@ p {
     .characters .btn--teal,
     .founders .btn--teal {
         display: inline-flex !important;
+        flex-wrap: wrap !important;
         align-items: center !important;
         justify-content: center !important;
         text-align: center !important;
-        white-space: nowrap !important;
+        white-space: normal !important;
         max-width: calc(100% - var(--space-8)) !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
         font-size: clamp(0.7rem, 3.5vw, 0.875rem) !important;
         padding-left: var(--space-4) !important;
         padding-right: var(--space-4) !important;
         margin-inline: auto !important;
         box-sizing: border-box !important;
+        line-height: 1.4 !important;
     }
 
     /* ── Second CTA buy button — shrink text to fit on mobile ── */
