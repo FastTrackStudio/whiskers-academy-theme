@@ -40,7 +40,8 @@
         "trust-4"
       ],
       "settings": {
-        "overlay_opacity": 70,
+        "bg_image": "shopify://shop_images/Gameplay_With_Simon.jpg",
+        "overlay_opacity": 75,
         "eyebrow_live": "Now Available · Ships Worldwide",
         "headline": "Paws Up, Class Is In Session",
         "subheadline": "The expandable card game where cats in blazers scheme, study, and steal their way to the top.",
@@ -157,6 +158,7 @@
         "row-1": {
           "type": "feature_row",
           "settings": {
+            "image": "shopify://shop_images/Thematic_Location_Square_01.jpg",
             "fallback_emoji": "📚",
             "title": "Build Your Deck & Study Up",
             "body": "Choose your cat scholar and build your purr-sonal deck. Earn education cards that bring you closer to your dream career.",
@@ -169,6 +171,7 @@
         "row-2": {
           "type": "feature_row",
           "settings": {
+            "image": "shopify://shop_images/Table_Presence_Square_01.png",
             "fallback_emoji": "😼",
             "title": "Scheme, Bluff & Outsmart",
             "body": "Books double as weapons. Gossip rules the halls. Every card is a calculated risk — or a delicious gamble.",
@@ -181,6 +184,7 @@
         "row-3": {
           "type": "feature_row",
           "settings": {
+            "image": "shopify://shop_images/ready.jpg",
             "fallback_emoji": "🏆",
             "title": "Graduate & Claim Top Cat",
             "body": "First to meet their graduation requirements claims the title of Top Cat. Will you study hard, cheat boldly, or do both?",
@@ -357,8 +361,9 @@
         "p-3"
       ],
       "settings": {
+        "photo": "shopify://shop_images/Emiel_Lisa_Temp.jpg",
         "photo_alt": "Emiel and Lisa, creators of Whiskers Academy",
-        "badge_text": "Two humans\ntrying to impress\ntheir cats 🐱",
+        "badge_text": "Two humanstrying to impresstheir cats 🐱",
         "eyebrow": "Our Story",
         "heading": "Meet The Creators",
         "show_cta": true
