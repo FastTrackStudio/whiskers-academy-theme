@@ -2239,6 +2239,16 @@ p {
         margin: 0 auto;
     }
 
+    /* Hero — tighten on mobile */
+    .hero {
+        min-height: auto !important;
+        align-items: flex-start !important;
+    }
+
+    .hero__content {
+        padding: var(--space-10) var(--space-4) !important;
+    }
+
     /* Sticky CTA */
     .sticky-cta {
         flex-direction: column !important;
@@ -2477,18 +2487,18 @@ p {
     /* ── Character + founder CTA buttons — centered, no overflow ── */
     .characters .btn--teal,
     .founders .btn--teal {
-        display: flex !important;
+        display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
         text-align: center !important;
-        white-space: normal !important;
-        word-break: break-word !important;
-        width: calc(100% - var(--space-8)) !important;
-        max-width: 100% !important;
+        white-space: nowrap !important;
+        max-width: calc(100% - var(--space-8)) !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        font-size: clamp(0.7rem, 3.5vw, 0.875rem) !important;
+        padding-left: var(--space-4) !important;
+        padding-right: var(--space-4) !important;
         margin-inline: auto !important;
-        font-size: var(--text-sm) !important;
-        padding-left: var(--space-5) !important;
-        padding-right: var(--space-5) !important;
         box-sizing: border-box !important;
     }
 
