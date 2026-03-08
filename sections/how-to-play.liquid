@@ -14,7 +14,8 @@
             {%- if block.settings.image != blank -%}
               <img src="{{ block.settings.image | image_url: width: 800 }}"
                    alt="{{ block.settings.title }}"
-                   width="800" loading="lazy">
+                   width="800" loading="lazy"
+                   style="aspect-ratio:4/3;width:100%;object-fit:cover;border-radius:var(--radius-lg);display:block;">
             {%- else -%}
               <div style="aspect-ratio:4/3;background:linear-gradient(135deg,var(--color-primary-light),var(--color-cream));border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;font-size:5rem;">{{ block.settings.fallback_emoji | default: '🐾' }}</div>
             {%- endif -%}
