@@ -339,7 +339,7 @@
         "p-1": {
           "type": "paragraph",
           "settings": {
-            "text": "We are Emiel and Lisa from Whiskers Academy — two humans trying to impress their cats. We built a fast, expandable card game that treats humor and strategy like lab partners."
+            "text": "We are Emiel and Lisa from Whiskers Academy — two humans trying to impress their cats. We built a fast, expandable card game that treats \nhumor and strategy like lab partners."
           }
         },
         "p-2": {
