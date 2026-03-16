@@ -64,26 +64,108 @@
         });
     });
 
-    /* ─── 5. Buy Box Gallery ──────────────────────── */
-    const galleryMain = qs('.gallery-main img');
+    /* ─── 5. Buy Box Gallery ──────────────────────────────── */
+    const galleryMain = qs('#mainGalleryImg');
     const thumbs = qsa('.gallery-thumb');
+    let activeThumbIndex = 0;
+
+    function setActiveThumb(idx) {
+        activeThumbIndex = idx;
+        thumbs.forEach(t => t.classList.remove('is-active'));
+        if (thumbs[idx]) thumbs[idx].classList.add('is-active');
+    }
+
+    function swapMainImage(src, idx) {
+        if (!galleryMain || !src) return;
+        galleryMain.style.opacity = '0';
+        setTimeout(() => {
+            galleryMain.src = src;
+            galleryMain.style.opacity = '1';
+        }, 180);
+        setActiveThumb(idx);
+    }
+
     if (galleryMain && thumbs.length) {
         thumbs.forEach((thumb, i) => {
-            thumb.addEventListener('click', () => {
-                const src = thumb.dataset.src;
-                if (!src) return;
-                galleryMain.style.opacity = '0';
-                setTimeout(() => {
-                    galleryMain.src = src;
-                    galleryMain.style.opacity = '1';
-                }, 180);
-                thumbs.forEach(t => t.classList.remove('is-active'));
-                thumb.classList.add('is-active');
-            });
+            thumb.addEventListener('click', () => swapMainImage(thumb.dataset.src, i));
         });
     }
 
-    /* ─── 6. Sticky CTA (mobile) ──────────────────── */
+    /* ─── 6. Image Lightbox ──────────────────────────────── */
+    const lightbox = qs('#galleryLightbox');
+    const lightboxImg = qs('#lightboxImg');
+    const allSrcs = thumbs.map(t => t.dataset.src).filter(Boolean);
+    let lightboxIndex = 0;
+
+    function openLightbox(idx) {
+        if (!lightbox || !lightboxImg || !allSrcs.length) return;
+        lightboxIndex = idx;
+        lightboxImg.style.opacity = '0';
+        lightbox.hidden = false;
+        document.body.style.overflow = 'hidden';
+        lightboxImg.src = allSrcs[lightboxIndex];
+        lightboxImg.onload = () => { lightboxImg.style.opacity = '1'; };
+        // if already cached, fire immediately
+        if (lightboxImg.complete) lightboxImg.style.opacity = '1';
+        updateArrows();
+    }
+
+    function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.hidden = true;
+        document.body.style.overflow = '';
+    }
+
+    function stepLightbox(dir) {
+        lightboxIndex = (lightboxIndex + dir + allSrcs.length) % allSrcs.length;
+        lightboxImg.style.opacity = '0';
+        setTimeout(() => {
+            lightboxImg.src = allSrcs[lightboxIndex];
+            lightboxImg.style.opacity = '1';
+            // sync thumbnail highlight
+            setActiveThumb(lightboxIndex);
+            if (galleryMain) {
+                galleryMain.src = allSrcs[lightboxIndex];
+            }
+        }, 180);
+        updateArrows();
+    }
+
+    function updateArrows() {
+        const prevBtn = qs('[data-lightbox-prev]');
+        const nextBtn = qs('[data-lightbox-next]');
+        if (prevBtn) prevBtn.style.display = allSrcs.length <= 1 ? 'none' : '';
+        if (nextBtn) nextBtn.style.display = allSrcs.length <= 1 ? 'none' : '';
+    }
+
+    if (lightbox) {
+        // Open on main image click
+        const openTrigger = qs('[data-lightbox-open]');
+        if (openTrigger) {
+            openTrigger.addEventListener('click', () => openLightbox(activeThumbIndex));
+        }
+
+        // Close buttons / backdrop
+        qsa('[data-lightbox-close]').forEach(el =>
+            el.addEventListener('click', closeLightbox)
+        );
+
+        // Prev / next arrows
+        const prevBtn = qs('[data-lightbox-prev]');
+        const nextBtn = qs('[data-lightbox-next]');
+        if (prevBtn) prevBtn.addEventListener('click', () => stepLightbox(-1));
+        if (nextBtn) nextBtn.addEventListener('click', () => stepLightbox(1));
+
+        // Keyboard navigation
+        document.addEventListener('keydown', e => {
+            if (lightbox.hidden) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft')  stepLightbox(-1);
+            if (e.key === 'ArrowRight') stepLightbox(1);
+        });
+    }
+
+    /* ─── 7. Sticky CTA (mobile) ──────────────────── */
     const stickyCTA = qs('#StickyCTA');
     const heroBuyBtn = qs('.hero__actions .btn--primary');
     if (stickyCTA && heroBuyBtn) {

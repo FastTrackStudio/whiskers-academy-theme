@@ -8,38 +8,70 @@
       <!-- Image Gallery -->
       <div class="buybox__gallery" data-reveal>
         <div class="gallery-main">
-          <img id="mainGalleryImg"
-               src="{%- if section.settings.image_1 != blank -%}{{ section.settings.image_1 | image_url: width: 800 }}{%- elsif _product.featured_image -%}{{ _product.featured_image | image_url: width: 800 }}{%- endif -%}"
-               alt="{{ section.settings.product_title }}"
-               width="800" loading="eager">
+          <button class="gallery-main__lightbox-trigger" aria-label="Open image lightbox" data-lightbox-open>
+            <img id="mainGalleryImg"
+                 src="{%- if section.settings.image_1 != blank -%}{{ section.settings.image_1 | image_url: width: 800 }}{%- elsif _product.featured_image -%}{{ _product.featured_image | image_url: width: 800 }}{%- endif -%}"
+                 alt="{{ section.settings.product_title }}"
+                 width="800" loading="eager">
+            <span class="gallery-main__zoom-hint" aria-hidden="true">🔍</span>
+          </button>
         </div>
 
         <!-- Thumbnails -->
         <div class="gallery-thumbs">
           {%- if section.settings.image_1 != blank -%}
             <div class="gallery-thumb is-active"
-                 data-src="{{ section.settings.image_1 | image_url: width: 800 }}">
+                 data-src="{{ section.settings.image_1 | image_url: width: 800 }}"
+                 data-index="0">
               <img src="{{ section.settings.image_1 | image_url: width: 144 }}" alt="View 1" loading="lazy">
             </div>
           {%- endif -%}
           {%- if section.settings.image_2 != blank -%}
             <div class="gallery-thumb"
-                 data-src="{{ section.settings.image_2 | image_url: width: 800 }}">
+                 data-src="{{ section.settings.image_2 | image_url: width: 800 }}"
+                 data-index="1">
               <img src="{{ section.settings.image_2 | image_url: width: 144 }}" alt="View 2" loading="lazy">
             </div>
           {%- endif -%}
           {%- if section.settings.image_3 != blank -%}
             <div class="gallery-thumb"
-                 data-src="{{ section.settings.image_3 | image_url: width: 800 }}">
+                 data-src="{{ section.settings.image_3 | image_url: width: 800 }}"
+                 data-index="2">
               <img src="{{ section.settings.image_3 | image_url: width: 144 }}" alt="View 3" loading="lazy">
             </div>
           {%- endif -%}
           {%- if section.settings.image_4 != blank -%}
             <div class="gallery-thumb"
-                 data-src="{{ section.settings.image_4 | image_url: width: 800 }}">
+                 data-src="{{ section.settings.image_4 | image_url: width: 800 }}"
+                 data-index="3">
               <img src="{{ section.settings.image_4 | image_url: width: 144 }}" alt="View 4" loading="lazy">
             </div>
           {%- endif -%}
+          {%- if section.settings.image_5 != blank -%}
+            <div class="gallery-thumb"
+                 data-src="{{ section.settings.image_5 | image_url: width: 800 }}"
+                 data-index="4">
+              <img src="{{ section.settings.image_5 | image_url: width: 144 }}" alt="View 5" loading="lazy">
+            </div>
+          {%- endif -%}
+          {%- if section.settings.image_6 != blank -%}
+            <div class="gallery-thumb"
+                 data-src="{{ section.settings.image_6 | image_url: width: 800 }}"
+                 data-index="5">
+              <img src="{{ section.settings.image_6 | image_url: width: 144 }}" alt="View 6" loading="lazy">
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <!-- Image Lightbox Overlay -->
+      <div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+        <div class="gallery-lightbox__backdrop" data-lightbox-close></div>
+        <button class="gallery-lightbox__btn gallery-lightbox__close" data-lightbox-close aria-label="Close">✕</button>
+        <button class="gallery-lightbox__btn gallery-lightbox__prev" data-lightbox-prev aria-label="Previous image">&#8592;</button>
+        <button class="gallery-lightbox__btn gallery-lightbox__next" data-lightbox-next aria-label="Next image">&#8594;</button>
+        <div class="gallery-lightbox__frame">
+          <img class="gallery-lightbox__img" id="lightboxImg" src="" alt="Product image">
         </div>
       </div>
 
@@ -155,11 +187,13 @@
       "type": "url", "id": "buy_url",
       "label": "Fallback Buy URL (if no Shopify product)"
     },
-    { "type": "header", "content": "Gallery Images (up to 4)" },
+    { "type": "header", "content": "Gallery Images (up to 6)" },
     { "type": "image_picker", "id": "image_1", "label": "Gallery image 1 (main)" },
     { "type": "image_picker", "id": "image_2", "label": "Gallery image 2" },
     { "type": "image_picker", "id": "image_3", "label": "Gallery image 3" },
     { "type": "image_picker", "id": "image_4", "label": "Gallery image 4" },
+    { "type": "image_picker", "id": "image_5", "label": "Gallery image 5" },
+    { "type": "image_picker", "id": "image_6", "label": "Gallery image 6" },
     { "type": "header", "content": "Pre-order Info" },
     {
       "type": "textarea", "id": "preorder_explainer",
