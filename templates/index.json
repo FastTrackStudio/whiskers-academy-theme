@@ -160,7 +160,7 @@
           "settings": {
             "image": "shopify://shop_images/Thematic_Location_Square_01.jpg",
             "fallback_emoji": "📚",
-            "title": "Build Your Deck & Study Up",
+            "title": "Build Your Career & Study Up",
             "body": "Choose your cat scholar and collect your purr-sonal education cards that bring you closer to your dream career.",
             "bullet_1": "Collect education cards fast",
             "bullet_2": "Counter surprise exams from rivals",
@@ -174,10 +174,10 @@
             "image": "shopify://shop_images/Table_Presence_Square_01.png",
             "fallback_emoji": "😼",
             "title": "Scheme, Plan & Outsmart",
-            "body": "Books double as weapons. Gossip rules the halls. Every card is a calculated risk — or a delicious gamble.",
+            "body": "Books double as weapons. Gossip rules the halls. And the path to prestige is anything but dignified.",
             "bullet_1": "Steal advantages from classmates",
-            "bullet_2": "Bluff your way through exams",
-            "bullet_3": "Time your moves for maximum chaos",
+            "bullet_2": "Make smart combo's to gain an edge",
+            "bullet_3": "Study hard to protect yourself from exams",
             "bullet_4": ""
           }
         },
