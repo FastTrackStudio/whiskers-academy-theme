@@ -212,49 +212,55 @@
         "char-1": {
           "type": "character",
           "settings": {
+            "image": "shopify://shop_images/Police.png",
             "emoji": "🎩",
-            "name": "Professor Mittens",
-            "career": "Dean of Chaos"
+            "name": "Police",
+            "career": "Justice doesn’t nap"
           }
         },
         "char-2": {
           "type": "character",
           "settings": {
-            "emoji": "💼",
-            "name": "Lady Fluffington",
-            "career": "Corporate Spy"
+            "image": "shopify://shop_images/Criminal.png",
+            "emoji": "",
+            "name": "Criminal",
+            "career": "I don’t steal. I correct ownership errors"
           }
         },
         "char-3": {
           "type": "character",
           "settings": {
+            "image": "shopify://shop_images/Lawyer_530ccfe7-73da-4c08-9786-dc1991d662b2.png",
             "emoji": "📚",
-            "name": "Sir Whiskers III",
-            "career": "Academic Swindler"
+            "name": "Lawyer",
+            "career": "Rules are made to be interpreted... preferably by me"
           }
         },
         "char-4": {
           "type": "character",
           "settings": {
+            "image": "shopify://shop_images/Artist.png",
             "emoji": "🎭",
-            "name": "Duchess Pawsworth",
-            "career": "Drama Professor"
+            "name": "Artist",
+            "career": "It’s not messy — it’s layered"
           }
         },
         "char-5": {
           "type": "character",
           "settings": {
+            "image": "shopify://shop_images/Doctor.png",
             "emoji": "🔬",
-            "name": "Dr. Tabby",
-            "career": "Mad Scientist"
+            "name": "Doctor",
+            "career": "You sneezed on me. This is war"
           }
         },
         "char-6": {
           "type": "character",
           "settings": {
+            "image": "shopify://shop_images/Engineer.png",
             "emoji": "⚖️",
-            "name": "Judge Claw",
-            "career": "Student Parliament"
+            "name": "Engineer",
+            "career": "If I can’t fix it, it’s probably not real"
           }
         }
       },
@@ -383,7 +389,7 @@
           "type": "faq_item",
           "settings": {
             "question": "What's included in the box?",
-            "answer": "100+ illustrated cards, a full-colour rules booklet, character reference cards, and a sturdy game box."
+            "answer": "140 illustrated cards, a full-colour rules booklet, character reference cards, and a sturdy game box."
           }
         },
         "faq-3": {
