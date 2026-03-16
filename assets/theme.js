@@ -268,23 +268,25 @@
         });
     });
 
-    /* ─── 11. Email form — prevent default + feedback  */
+    /* ─── 11. Email form — validate then allow native POST to Shopify */
     const emailForm = qs('.email-form');
     if (emailForm) {
         emailForm.addEventListener('submit', e => {
-            e.preventDefault();
             const input = qs('.email-form__input', emailForm);
-            const btn = qs('.email-form__btn', emailForm);
+            const btn   = qs('.email-form__btn', emailForm);
+            // Client-side validation only — do NOT prevent default on success
             if (!input || !input.value.includes('@')) {
+                e.preventDefault();
                 input.focus();
                 input.style.borderColor = '#E07A5F';
                 return;
             }
-            btn.textContent = '🎓 You\'re In!';
-            btn.disabled = true;
-            input.disabled = true;
+            // Fire pixel before the page navigates away
             firePixel('Lead', { content_name: 'Email Capture', status: 'submitted' });
-            // In production, connect to Klaviyo / your email service
+            // Visual feedback while the browser posts the form
+            btn.textContent = '🎓 Saving…';
+            btn.disabled = true;
+            // Form submits naturally → Shopify creates the customer record
         });
     }
 
