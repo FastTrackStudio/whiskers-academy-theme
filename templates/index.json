@@ -41,7 +41,7 @@
       ],
       "settings": {
         "bg_image": "shopify://shop_images/Players_Banner_02.jpg",
-        "overlay_opacity": 75,
+        "overlay_opacity": 30,
         "eyebrow_live": "Now Available · Ships Worldwide",
         "headline": "Paws Up, Class Is In Session",
         "subheadline": "The expandable card game where cats in blazers scheme, study, and steal their way to the top.",
