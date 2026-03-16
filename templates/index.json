@@ -58,7 +58,7 @@
         "stat-1": {
           "type": "stat",
           "settings": {
-            "icon": "👥",
+            "icon": "😺",
             "label": "Players",
             "value": "2–6"
           }
@@ -100,7 +100,7 @@
       "type": "product-buybox",
       "settings": {
         "product_title": "Whiskers Academy Card Game",
-        "product_tagline": "The expandable card game where cats chase their dream careers. For 2–6 players, ages 14+.",
+        "product_tagline": "The competitive card game where cats chase their dream careers. For 2–6 players, ages 14+.",
         "price": "23.99",
         "buy_url": "",
         "image_1": "shopify://shop_images/Box_Square_02.png",
