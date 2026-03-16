@@ -275,7 +275,7 @@
       "settings": {
         "eyebrow": "The Cast",
         "heading": "Meet Your Classmates",
-        "subheading": "Hand-drawn cat scholars with personality and bite. Each one has their own strategy — and their own agenda."
+        "subheading": "Hand-drawn cat scholars with personality and bite. Each one has their own strategy - and their own agenda."
       }
     },
     "comparisons": {
@@ -312,7 +312,7 @@
         "game-5": {
           "type": "game",
           "settings": {
-            "emoji": "🧨",
+            "emoji": "🎴",
             "game_name": "Uno"
           }
         },
