@@ -389,7 +389,7 @@
           "type": "faq_item",
           "settings": {
             "question": "What's included in the box?",
-            "answer": "140 illustrated cards, a full-colour rules booklet, character reference cards, and a sturdy game box."
+            "answer": "144 illustrated cards, a full-colour rules booklet and a sturdy game box."
           }
         },
         "faq-3": {
@@ -410,7 +410,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Can I cancel my pre-order?",
-            "answer": "Yes — we accept cancellations up to 30 days after your order. After that, orders enter production."
+            "answer": "Yes - we accept cancellations up to 30 days after your order. After that, orders enter production. Once the order is shipped you can no longer cancel."
           }
         },
         "faq-6": {
