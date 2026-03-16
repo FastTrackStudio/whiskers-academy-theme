@@ -233,7 +233,7 @@
             "image": "shopify://shop_images/Lawyer_530ccfe7-73da-4c08-9786-dc1991d662b2.png",
             "emoji": "📚",
             "name": "Lawyer",
-            "career": "Rules are made to be interpreted... preferably by me"
+            "career": "Rules are made to be interpreted..."
           }
         },
         "char-4": {
@@ -242,7 +242,7 @@
             "image": "shopify://shop_images/Artist.png",
             "emoji": "🎭",
             "name": "Artist",
-            "career": "It’s not messy — it’s layered"
+            "career": "It’s not messy — it’s art"
           }
         },
         "char-5": {
@@ -251,7 +251,7 @@
             "image": "shopify://shop_images/Doctor.png",
             "emoji": "🔬",
             "name": "Doctor",
-            "career": "You sneezed on me. This is war"
+            "career": "A tuna a day keeps the doctor away"
           }
         },
         "char-6": {
@@ -260,7 +260,7 @@
             "image": "shopify://shop_images/Engineer.png",
             "emoji": "⚖️",
             "name": "Engineer",
-            "career": "If I can’t fix it, it’s probably not real"
+            "career": "Who needs a ruler when you can guess"
           }
         }
       },
