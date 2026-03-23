@@ -1,5 +1,6 @@
 {%- assign _ph = settings.product_handle | default: 'whiskers-academy-card-game' -%}
 {%- assign _product = all_products[_ph] -%}
+{%- assign _variant = _product.first_available_variant -%}
 
 <section class="buybox section-pad" id="buy-box">
   <div class="container">
@@ -111,7 +112,6 @@
 
         <!-- Add to Cart / Pre-Order Button -->
         {%- if _product != blank -%}
-          {%- assign _variant = _product.first_available_variant -%}
           <button class="btn btn--primary btn--lg buybox__add-btn btn--pulse"
                   data-add-to-cart
                   data-variant-id="{{ _variant.id }}"
