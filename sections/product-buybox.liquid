@@ -94,12 +94,22 @@
         {%- endif -%}
 
         <!-- Price -->
+        {%- assign _markup_pct = section.settings.compare_markup | default: 25 -%}
+        {%- assign _fake_compare = _variant.price | times: 100 | plus: _variant.price | times: _markup_pct | divided_by: 100 -%}
+        {%- comment %}Simpler calculation: price * (100 + markup) / 100 in one step{%- endcomment -%}
+        {%- assign _fake_compare = _variant.price | times: _markup_pct | divided_by: 100 | plus: _variant.price | round -%}
         <div class="buybox__price-row">
           <span class="buybox__price">
-            {%- if _variant.compare_at_price > _variant.price -%}
-              <s style="opacity:0.5;font-size:1.1rem;font-weight:400;">{{ _variant.compare_at_price | money }}</s>
+            {%- if _variant -%}
+              {%- if _variant.compare_at_price > _variant.price -%}
+                <s style="opacity:0.5;font-size:1.1rem;font-weight:400;">{{ _variant.compare_at_price | money }}</s>
+              {%- elsif section.settings.compare_markup > 0 -%}
+                <s style="opacity:0.5;font-size:1.1rem;font-weight:400;">{{ _fake_compare | money }}</s>
+              {%- endif -%}
+              {{ _variant.price | money }}
+            {%- else -%}
+              ${{ settings.sale_price | default: section.settings.price }}
             {%- endif -%}
-            {%- if _variant -%}{{ _variant.price | money }}{%- else -%}${{ settings.sale_price | default: section.settings.price }}{%- endif -%}
           </span>
         </div>
 
@@ -113,7 +123,7 @@
                   data-variant-id="{{ _variant.id }}"
                   {%- if _variant.available == false -%} disabled {%- endif -%}>
             {%- if settings.pre_order_mode -%}
-              🐾 Pre-Order Now — {%- if _variant.compare_at_price > _variant.price -%}<s style="opacity:0.6;font-weight:400;">{{ _variant.compare_at_price | money }}</s> {%- endif -%}{{ _variant.price | money }}
+              🐾 Pre-Order Now — {%- if _variant.compare_at_price > _variant.price -%}<s style="opacity:0.6;font-weight:400;">{{ _variant.compare_at_price | money }}</s> {%- elsif section.settings.compare_markup > 0 -%}<s style="opacity:0.6;font-weight:400;">{{ _fake_compare | money }}</s> {%- endif -%}{{ _variant.price | money }}
             {%- elsif _variant.available -%}
               🛒 Buy Now — {{ _variant.price | money }}
             {%- else -%}
@@ -203,6 +213,13 @@
       "type": "text", "id": "whats_in_box",
       "label": "What's in the box",
       "default": "100+ illustrated cards · Rules booklet · Durable game box · Character reference cards"
+    },
+    { "type": "header", "content": "Strikethrough Price" },
+    {
+      "type": "range", "id": "compare_markup",
+      "label": "Show fake 'was' price (% above sale price)",
+      "info": "E.g. 25 = show a strikethrough price that is 25% higher than the sale price. Set to 0 to hide. Ignored if the Shopify product already has a Compare at price set.",
+      "min": 0, "max": 80, "step": 5, "default": 25, "unit": "%"
     }
   ],
   "blocks": [
