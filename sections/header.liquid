@@ -35,7 +35,9 @@
     <!-- Header CTA -->
     <div class="site-header__cta">
       <a href="#buy-box" class="btn btn--primary btn--sm hide-mobile">
-        {%- if settings.pre_order_mode -%}Pre-Order — ${{ settings.sale_price | default: '23.99' }}{%- else -%}Buy Now — ${{ settings.sale_price | default: '23.99' }}{%- endif -%}
+        {%- assign _hph = settings.product_handle | default: 'whiskers-academy-card-game' -%}
+        {%- assign _hv = all_products[_hph].first_available_variant -%}
+        {%- if settings.pre_order_mode -%}Pre-Order — {%- if _hv -%}{{ _hv.price | money }}{%- else -%}${{ settings.sale_price | default: '23.99' }}{%- endif -%}{%- else -%}Buy Now — {%- if _hv -%}{{ _hv.price | money }}{%- else -%}${{ settings.sale_price | default: '23.99' }}{%- endif -%}{%- endif -%}
       </a>
       <button class="hamburger" id="Hamburger"
               aria-label="Open menu" aria-expanded="false" aria-controls="MobileNav">
@@ -63,7 +65,7 @@
     <a href="#faq"         class="site-nav__link">FAQ</a>
   {%- endif -%}
   <a href="#buy-box" class="btn btn--primary btn--pulse" style="margin-top:1rem;">
-    {%- if settings.pre_order_mode -%}🎓 Pre-Order — ${{ settings.sale_price | default: '23.99' }}{%- else -%}🛒 Buy Now — ${{ settings.sale_price | default: '23.99' }}{%- endif -%}
+    {%- if settings.pre_order_mode -%}🎓 Pre-Order — {%- if _hv -%}{{ _hv.price | money }}{%- else -%}${{ settings.sale_price | default: '23.99' }}{%- endif -%}{%- else -%}🛒 Buy Now — {%- if _hv -%}{{ _hv.price | money }}{%- else -%}${{ settings.sale_price | default: '23.99' }}{%- endif -%}{%- endif -%}
   </a>
 </nav>
 

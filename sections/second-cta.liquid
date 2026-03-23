@@ -13,10 +13,12 @@
 
       <div class="second-cta__actions" data-reveal>
         <a href="#buy-box" class="btn btn--primary btn--lg btn--pulse">
+          {%- assign _scph = settings.product_handle | default: 'whiskers-academy-card-game' -%}
+          {%- assign _scv = all_products[_scph].first_available_variant -%}
           {%- if settings.pre_order_mode -%}
-            🐾 Pre-Order Now — {%- if settings.original_price != blank -%}<s style="opacity:0.6;font-weight:400">${{ settings.original_price }}</s> {%- endif -%}${{ settings.sale_price | default: '23.99' }}
+            🐾 Pre-Order Now — {%- if _scv and _scv.compare_at_price > _scv.price -%}<s style="opacity:0.6;font-weight:400">${{ _scv.compare_at_price | money }}</s> {%- elsif settings.original_price != blank -%}<s style="opacity:0.6;font-weight:400">${{ settings.original_price }}</s> {%- endif -%}{%- if _scv -%}{{ _scv.price | money }}{%- else -%}${{ settings.sale_price | default: '23.99' }}{%- endif -%}
           {%- else -%}
-            🛒 Buy Now — ${{ settings.sale_price | default: '23.99' }}
+            🛒 Buy Now — {%- if _scv -%}{{ _scv.price | money }}{%- else -%}${{ settings.sale_price | default: '23.99' }}{%- endif -%}
           {%- endif -%}
         </a>
         {%- if settings.kickstarter_url != blank -%}

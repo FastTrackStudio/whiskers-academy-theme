@@ -39,12 +39,14 @@
     <!-- CTA Buttons -->
     <div class="hero__actions animate-fade-up animate-fade-up--delay-3">
       <a href="#buy-box" class="btn btn--primary btn--lg btn--pulse">
+        {%- assign _ph2 = settings.product_handle | default: 'whiskers-academy-card-game' -%}
+        {%- assign _pv = all_products[_ph2].first_available_variant -%}
         {%- if settings.pre_order_mode -%}
           🐾 {{ section.settings.cta_preorder }} —
-          {%- if settings.original_price != blank -%}<s style="opacity:0.6;font-size:0.9em;font-weight:400">${{ settings.original_price }}</s> {%- endif -%}
-          ${{ settings.sale_price | default: '23.99' }}
+          {%- if _pv and _pv.compare_at_price > _pv.price -%}<s style="opacity:0.6;font-size:0.9em;font-weight:400">{{ _pv.compare_at_price | money }}</s> {%- elsif settings.original_price != blank -%}<s style="opacity:0.6;font-size:0.9em;font-weight:400">${{ settings.original_price }}</s> {%- endif -%}
+          {%- if _pv -%}{{ _pv.price | money }}{%- else -%}${{ settings.sale_price | default: '23.99' }}{%- endif -%}
         {%- else -%}
-          🛒 {{ section.settings.cta_live }} — ${{ settings.sale_price | default: '23.99' }}
+          🛒 {{ section.settings.cta_live }} — {%- if _pv -%}{{ _pv.price | money }}{%- else -%}${{ settings.sale_price | default: '23.99' }}{%- endif -%}
         {%- endif -%}
       </a>
       {%- if section.settings.show_trailer_btn and settings.youtube_url != blank -%}

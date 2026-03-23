@@ -95,12 +95,15 @@
         <!-- Price -->
         <div class="buybox__price-row">
           <span class="buybox__price">
-            {%- if settings.show_promo_badge and settings.pre_order_mode and settings.original_price != blank -%}
-              <s style="opacity:0.5;font-size:1.1rem;font-weight:400;">${{ settings.original_price }}</s>
+            {%- if settings.show_promo_badge and settings.pre_order_mode -%}
+              {%- if _variant.compare_at_price > _variant.price -%}
+                <s style="opacity:0.5;font-size:1.1rem;font-weight:400;">{{ _variant.compare_at_price | money }}</s>
+              {%- elsif settings.original_price != blank -%}
+                <s style="opacity:0.5;font-size:1.1rem;font-weight:400;">${{ settings.original_price }}</s>
+              {%- endif -%}
             {%- endif -%}
-            ${{ settings.sale_price | default: section.settings.price }}
+            {%- if _variant -%}{{ _variant.price | money }}{%- else -%}${{ settings.sale_price | default: section.settings.price }}{%- endif -%}
           </span>
-
         </div>
 
         <!-- Stock -->
@@ -114,9 +117,9 @@
                   data-variant-id="{{ _variant.id }}"
                   {%- if _variant.available == false -%} disabled {%- endif -%}>
             {%- if settings.pre_order_mode -%}
-              🐾 Pre-Order Now — {%- if settings.original_price != blank -%}<s style="opacity:0.6;font-weight:400;">${{ settings.original_price }}</s> {%- endif -%}${{ settings.sale_price }}
+              🐾 Pre-Order Now — {%- if _variant.compare_at_price > _variant.price -%}<s style="opacity:0.6;font-weight:400;">{{ _variant.compare_at_price | money }}</s> {%- elsif settings.original_price != blank -%}<s style="opacity:0.6;font-weight:400;">${{ settings.original_price }}</s> {%- endif -%}{{ _variant.price | money }}
             {%- elsif _variant.available -%}
-              🛒 Buy Now — ${{ settings.sale_price }}
+              🛒 Buy Now — {{ _variant.price | money }}
             {%- else -%}
               Sold Out
             {%- endif -%}

@@ -61,10 +61,13 @@
 
   <div class="sticky-cta" id="StickyCTA" aria-hidden="true">
     <a href="#buy-box" class="sticky-cta__btn">
+      {%- assign _ph = settings.product_handle | default: 'whiskers-academy-card-game' -%}
+      {%- assign _p = all_products[_ph] -%}
+      {%- assign _v = _p.first_available_variant -%}
       {%- if settings.pre_order_mode -%}
-        🎓 Pre-Order Now — {%- if settings.original_price != blank -%}<s style="opacity:0.6;font-weight:400">${{ settings.original_price }}</s> {%- endif -%}${{ settings.sale_price | default: '23.99' }}
+        🎓 Pre-Order Now — {%- if _v and _v.compare_at_price > _v.price -%}<s style="opacity:0.6;font-weight:400">{{ _v.compare_at_price | money }}</s> {%- elsif settings.original_price != blank -%}<s style="opacity:0.6;font-weight:400">${{ settings.original_price }}</s> {%- endif -%}{%- if _v -%}{{ _v.price | money }}{%- else -%}${{ settings.sale_price | default: '23.99' }}{%- endif -%}
       {%- else -%}
-        🛒 Buy Now — ${{ settings.sale_price | default: '23.99' }}
+        🛒 Buy Now — {%- if _v -%}{{ _v.price | money }}{%- else -%}${{ settings.sale_price | default: '23.99' }}{%- endif -%}
       {%- endif -%}
     </a>
     <span class="sticky-cta__scarcity">Only {{ settings.stock_display_count | default: 47 }} copies left</span>

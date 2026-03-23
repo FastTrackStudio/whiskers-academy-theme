@@ -30,7 +30,9 @@
         {%- endfor -%}
         {%- if section.settings.show_cta -%}
         <a href="#buy-box" class="btn btn--teal">
-          🐾 Support Our Game — Pre-Order {%- if settings.original_price != blank -%}<s style="opacity:0.6;font-weight:400">${{ settings.original_price }}</s> {%- endif -%}${{ settings.sale_price | default: '23.99' }}
+          {%- assign _fsph = settings.product_handle | default: 'whiskers-academy-card-game' -%}
+          {%- assign _fsv = all_products[_fsph].first_available_variant -%}
+          🐾 Support Our Game — Pre-Order {%- if _fsv and _fsv.compare_at_price > _fsv.price -%}<s style="opacity:0.6;font-weight:400">{{ _fsv.compare_at_price | money }}</s> {%- elsif settings.original_price != blank -%}<s style="opacity:0.6;font-weight:400">${{ settings.original_price }}</s> {%- endif -%}{%- if _fsv -%}{{ _fsv.price | money }}{%- else -%}${{ settings.sale_price | default: '23.99' }}{%- endif -%}
         </a>
         {%- endif -%}
       </div>

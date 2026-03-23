@@ -28,7 +28,9 @@
 
     <div style="text-align:center;margin-top:var(--space-8);" data-reveal>
       <a href="#buy-box" class="btn btn--teal">
-        🎓 Get Your Copy — {%- if settings.original_price != blank and settings.pre_order_mode -%}<s style="opacity:0.6;font-weight:400">${{ settings.original_price }}</s> {%- endif -%}${{ settings.sale_price | default: '23.99' }}
+        {%- assign _csph = settings.product_handle | default: 'whiskers-academy-card-game' -%}
+        {%- assign _csv = all_products[_csph].first_available_variant -%}
+        🎓 Get Your Copy — {%- if _csv and _csv.compare_at_price > _csv.price and settings.pre_order_mode -%}<s style="opacity:0.6;font-weight:400">{{ _csv.compare_at_price | money }}</s> {%- elsif settings.original_price != blank and settings.pre_order_mode -%}<s style="opacity:0.6;font-weight:400">${{ settings.original_price }}</s> {%- endif -%}{%- if _csv -%}{{ _csv.price | money }}{%- else -%}${{ settings.sale_price | default: '23.99' }}{%- endif -%}
       </a>
     </div>
   </div>
