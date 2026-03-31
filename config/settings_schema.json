@@ -36,14 +36,14 @@
             {
                 "type": "checkbox",
                 "id": "show_promo_badge",
-                "label": "Show 20% OFF promo badge",
+                "label": "Show 40% OFF promo badge",
                 "default": true
             },
             {
                 "type": "text",
                 "id": "promo_badge_text",
                 "label": "Promo badge text",
-                "default": "🔥 20% OFF — Pre-Order Exclusive"
+                "default": "🔥 40% OFF — Pre-Order Exclusive"
             },
             {
                 "type": "number",
