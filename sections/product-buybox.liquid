@@ -102,9 +102,9 @@
           <span class="buybox__price">
             {%- if _variant -%}
               {%- if _variant.compare_at_price > _variant.price -%}
-                <s style="opacity:0.5;font-size:1.1rem;font-weight:400;">{{ _variant.compare_at_price | money }}</s>
+                <s style="opacity:0.5;font-size:1.1rem;font-weight:400;margin-right:0.4rem;">{{ _variant.compare_at_price | money }}</s>
               {%- elsif section.settings.compare_markup > 0 -%}
-                <s style="opacity:0.5;font-size:1.1rem;font-weight:400;">{{ _fake_compare | money }}</s>
+                <s style="opacity:0.5;font-size:1.1rem;font-weight:400;margin-right:0.4rem;">{{ _fake_compare | money }}</s>
               {%- endif -%}
               {{ _variant.price | money }}
             {%- else -%}
