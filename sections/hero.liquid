@@ -43,10 +43,10 @@
         {%- assign _pv = all_products[_ph2].first_available_variant -%}
         {%- if settings.pre_order_mode -%}
           🐾 {{ section.settings.cta_preorder }} —
-          {%- if _pv and _pv.compare_at_price > _pv.price -%}<s style="opacity:0.6;font-size:0.9em;font-weight:400">{{ _pv.compare_at_price | money }}</s> {%- elsif settings.original_price != blank -%}<s style="opacity:0.6;font-size:0.9em;font-weight:400">${{ settings.original_price }}</s> {%- endif -%}
-          {%- if _pv -%}{{ _pv.price | money }}{%- else -%}${{ settings.sale_price | default: '23.99' }}{%- endif -%}
+          {%- if _pv and _pv.compare_at_price > _pv.price -%}<s style="opacity:0.6;font-size:0.9em;font-weight:400">{{ _pv.compare_at_price | money }}</s> {%- endif -%}
+          {{ _pv.price | money }}
         {%- else -%}
-          🛒 {{ section.settings.cta_live }} — {%- if _pv -%}{{ _pv.price | money }}{%- else -%}${{ settings.sale_price | default: '23.99' }}{%- endif -%}
+          🛒 {{ section.settings.cta_live }} — {{ _pv.price | money }}
         {%- endif -%}
       </a>
       {%- if section.settings.show_trailer_btn and settings.youtube_url != blank -%}

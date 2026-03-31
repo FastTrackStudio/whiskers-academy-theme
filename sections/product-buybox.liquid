@@ -108,7 +108,7 @@
               {%- endif -%}
               {{ _variant.price | money }}
             {%- else -%}
-              ${{ settings.sale_price | default: section.settings.price }}
+              —
             {%- endif -%}
           </span>
         </div>
@@ -133,7 +133,7 @@
         {%- else -%}
           <a href="{{ section.settings.buy_url | default: '/cart' }}"
              class="btn btn--primary btn--lg buybox__add-btn btn--pulse">
-            🐾 Pre-Order Now — {%- if settings.original_price != blank and settings.pre_order_mode -%}<s style="opacity:0.6;font-weight:400;">${{ settings.original_price }}</s> {%- endif -%}${{ settings.sale_price | default: section.settings.price }}
+          🐾 Pre-Order Now
           </a>
         {%- endif -%}
 
